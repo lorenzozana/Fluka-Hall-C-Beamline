@@ -1,0 +1,1080 @@
+TITLE
+Hall C activation
+* Set the defaults for precision simulations
+DEFAULTS                                                              PRECISIO
+* Define the beam characteristics
+BEAM           -10.6             .142857      0.01      0.01          ELECTRON
+* Define the beam position
+BEAMPOS          0.0       0.0    -1400.
+RANDOMIZ          1.   123456.
+START      50000000.
+PHOTONUC          1.                      BLCKHOLE  @LASTMAT
+PHOTONUC          1.                      BLCKHOLE  @LASTMAT          ELECTNUC
+GEOBEGIN                                                 0.0          COMBNAME
+    0    0          
+* Black body
+SPH BlkBody    0.0 0.0 0.0 10000.
+* Air around the beam line
+RCC HallAir    0.0 0.0 -3500. 0.0 0.0 7000. 1000.
+RPP minang_o   -1.977898 3.199892 -6.0325 5.9055 74.93 109.855
+RPP minang_i   -1.977898 2.975102 -3.556 3.429 74.93 109.855
+RPP bender_o   -10. 35. -32.131 32.131 50. 110.
+RPP bender_i   -8.560562 30. -6.0325 6.0325 62.276482 130.
+PLA bend_1     40.09276 -985.26323 326.5195 24.2697 21.953982 62.276482
+PLA bend_2     62.7233 0.00011 510.825 24.2697 21.953982 62.276482
+PLA bend_3     -1307.890 0.0 329.616 24.2697 21.953982 62.276482
+PLA bend_4     40.09276 985.26323 326.5195 24.2697 -21.953982 62.276482
+PLA bend_5     803.8415 0.00782 19.4623 -8.560562 32.131 97.016316
+PLA bend_6     246.73872 0.0024 -30.2946 -8.560562 32.131 97.016316
+PLA bend_7     -318.273 0.0 -2592.151 32.93745 32.131 101.517704
+PLA bend_8     -607.5415 0.0 74.594 32.93745 32.131 101.517704
+PLA bend_9     479.0626 0.0 -58.82 16.717264 6.0325 63.203836
+* Wall in Hall-C
+RCC wall_in    -469. -397. 469. 0.0 1627. 0.0 2286.
+RCC wall_out   -469. -547. 469. 0.0 1777. 0.0 2436.
+SPH wall_tin   -469. -3665.34 469. 5402.78
+SPH wall_tou   -469. -3670.74 469. 5472.78
+RCC wall_min   -469. -9100. 469. 0.0 10330. 0.0 5600.
+* Nipple Flange
+RCC NippleFl   0.0 0.0 73.980040000000002 0.0 0.0 1.3004800000000012
+              3.5001199999999999
+* Nipple Flange Vacuum
+RCC NippleFV   0.0 0.0 73.98004 0.0 0.0 1.30048 1.84912
+* Nipple
+RCC Nipple     0.0 0.0 75.28052000000001 0.0 0.0 8.6995000000000022
+              2.1488399999999999
+* Nipple Vacuum
+RCC NippleV    0.0 0.0 75.28052 0.0 0.0 8.6995 1.84912
+RPP IntCha     -50. 50. -50. 50. -73.98004 69.85
+RCC BeamIn     0.0 0.0 -2500. 0.0 0.0 2426.0199600000001 2.1488399999999999
+* UpStream Transition BP
+RCC UpStTrBP   0.0 0.0 83.98002000000001 0.0 0.0 180.89117999999999 1.905
+* UpStream Transition BP Vacuum
+RCC UpStTrBV   0.0 0.0 83.98002 0.0 0.0 180.89118 1.5875
+* Transition BP Mid Flange
+RCC TrBPMiFl   0.0 0.0 264.87119999999999 0.0 0.0 1.0160000000000144 3.65252
+* Transition BP Mid Flange Vacuum
+RCC TrBPMiFV   0.0 0.0 264.8712 0.0 0.0 1.016 1.5875
+* Downstream Transitin BP
+RCC DoStTrBP   0.0 0.0 265.88720000000001 0.0 0.0 151.56179999999998 3.65252
+* Downstream Transitin BP Vacuum
+RCC DoStTrBV   0.0 0.0 265.8872 0.0 0.0 151.5618 3.13436
+* Transition BP Downstream Flange
+RCC TrBPDoFl   0.0 0.0 417.44900000000001 0.0 0.0 1.7272000000000174
+              7.0662799999999999
+* Transition BP Downstream Flange Vacuum
+RCC TrBPDoFV   0.0 0.0 417.449 0.0 0.0 1.7272 3.1369
+* 5 in Beam Pipe Upstream Flange
+RCC BP5iUpFl   0.0 0.0 419.17619999999999 0.0 0.0 2.7559000000000204
+              7.0662799999999999
+* 5 in Beam Pipe Upstream Flange Vacuum
+RCC BP5iUpFV   0.0 0.0 419.1762 0.0 0.0 2.7559 3.81
+* 5 in Beam Pipe
+RCC BP5in      0.0 0.0 421.93210000000005 0.0 0.0 446.74789999999996
+              7.0662799999999999
+* 5 in Beam Pipe Vacuum
+RCC BP5inV     0.0 0.0 421.9321 0.0 0.0 446.7479 6.41096
+* 5 in Beam Pipe Downstream Flange
+RCC BP5iDoFl   0.0 0.0 868.68000000000006 0.0 0.0 2.2986999999999309 13.6525
+* 5 in Beam Pipe Downstream Flange Vacuum
+RCC BP5iDoFV   0.0 0.0 868.68 0.0 0.0 2.2986999999999 6.40842
+* Bellows Upstream Flange
+RCC BellUpFl   0.0 0.0 870.97869999999989 0.0 0.0 2.54 13.6525
+* Bellows Upstream Flange Vacuum
+RCC BellUpFV   0.0 0.0 870.9787 0.0 0.0 2.54 9.9441
+* Bellows
+RCC BellowBP   0.0 0.0 873.51869999999997 0.0 0.0 12.903200000000105 10.16
+* Bellows
+RCC BellowBV   0.0 0.0 873.5187 0.0 0.0 12.9032 9.9441
+* Bellows Downstream Flange
+RCC BellDoFl   0.0 0.0 886.42190000000005 0.0 0.0 2.54 13.6525
+* Bellows Downstream Flange Vacuum
+RCC BellDoFV   0.0 0.0 886.4219 0.0 0.0 2.54 9.9441
+* 10 in Beam Pipe Upstream Flange
+RCC BP10UpFl   0.0 0.0 888.96190000000001 0.0 0.0 2.2225000000000001 13.6525
+* 10 in Beam Pipe Upstream Flange Vacuum
+RCC BP10UpFV   0.0 0.0 888.9619 0.0 0.0 2.2225 10.795
+* 10 in Beam Pipe
+RCC BP10in     0.0 0.0 891.1844000000001 0.0 0.0 196.215 13.6525
+* 10 in Beam Pipe Vacuum
+RCC BP10inV    0.0 0.0 891.1844 0.0 0.0 196.215 12.7254
+* 10 in Beam Pipe Downstream Flange
+RCC BP10DoFl   0.0 0.0 1087.3994 0.0 0.0 2.8574999999999999 22.859999999999999
+* 10 in Beam Pipe Downstream Flange Vacuum
+RCC BP10DoFV   0.0 0.0 1087.3994 0.0 0.0 2.8575 12.7254
+* Adapter Upstream Flange
+RCC AdUpFl     0.0 0.0 1090.2569000000001 0.0 0.0 3.8100000000000001
+              29.844999999999999
+* Adapter Upstream Flange Vacuum
+RCC AdUpFV     0.0 0.0 1090.2569 0.0 0.0 3.81 15.24
+* Aluminum Gate Valve Box
+RPP AlGaVaBx   -25.321259999999999 25.321259999999999 -25.321259999999999 95.75
+              1094.0669 1110.5261
+* Aluminum Gate Valve Box Vacuum
+RPP AlGaVaBV   -24.05126 24.05126 -24.05126 39.37 1095.3369 1109.2561
+* Aluminum Gate Valve Pipe Vacuum
+RCC AlGaVaPV   0.0 0.0 1094.0669 0.0 0.0 16.4592 15.24
+* 12 in Beam Pipe Upstream Flange
+RCC BP12UpFl   0.0 0.0 1110.5261 0.0 0.0 3.8100000000000001 29.844999999999999
+* 12 in Beam Pipe Upstream Flange Vacuum
+RCC BP12UpFV   0.0 0.0 1110.5261 0.0 0.0 3.81 15.16126
+* 12 in Beam Pipe
+RCC BP12in     0.0 0.0 1114.3361 0.0 0.0 151.15540000000013 16.192499999999999
+* 12 in Beam Pipe Vacuum
+RCC BP12inV    0.0 0.0 1114.3361 0.0 0.0 151.1554 15.16126
+* 12 in Beam Pipe Downstream Flange
+RCC BP12DoFl   0.0 0.0 1265.4915000000001 0.0 0.0 2.8574999999999999
+              22.859999999999999
+* 12 in Beam Pipe Downstream Flange Vacuum
+RCC BP12DoFV   0.0 0.0 1265.4915 0.0 0.0 2.8575 15.16126
+* 18 in Beam Pipe Upstream Flange
+RCC BP18UpFl   0.0 0.0 1268.3490000000002 0.0 0.0 4.8259999999999419
+              22.859999999999999
+* 18 in Beam Pipe Upstream Flange Vacuum
+RCC BP18UpFV   0.0 0.0 1268.349 0.0 0.0 4.8259999999999 15.875
+* 18 in Beam Pipe
+RCC BP18in     0.0 0.0 1273.175 0.0 0.0 375.28500000000003 22.859999999999999
+* 18 in Beam Pipe Vacuum
+RCC BP18inV    0.0 0.0 1273.175 0.0 0.0 375.285 21.9075
+* 18 in Beam Pipe Downstream Flange
+RCC BP18DoFl   0.0 0.0 1648.46 0.0 0.0 4.7625000000000002 30.48
+* 18 in Beam Pipe Downstream Flange Vacuum
+RCC BP18DoFV   0.0 0.0 1648.46 0.0 0.0 4.7625 21.9075
+* 24 in Beam Pipe-1 Upstream Flange
+RCC BP24aUFl   0.0 0.0 1653.2225000000001 0.0 0.0 4.7625000000000002 30.48
+* 24 in Beam Pipe-1 Upstream Flange Vacuum
+RCC BP24aUFV   0.0 0.0 1653.2225 0.0 0.0 4.7625 22.86
+* 24 in Beam Pipe-1
+RCC BP24a      0.0 0.0 1657.9850000000001 0.0 0.0 238.81079999999994 30.48
+* 24 in Beam Pipe-1 Vacuum
+RCC BP24aV     0.0 0.0 1657.985 0.0 0.0 238.8108 29.5275
+* 24 in Beam Pipe-1 Downstream Flange
+RCC BP24aDFl   0.0 0.0 1896.7957999999999 0.0 0.0 4.7625000000000002
+              40.640000000000001
+* 24 in Beam Pipe-1 Downstream Flange Vacuum
+RCC BP24aDFV   0.0 0.0 1896.7958 0.0 0.0 4.7625 29.5275
+* 24 in Beam Pipe-2 Upstream Flange
+RCC BP24bUFl   0.0 0.0 1901.5582999999999 0.0 0.0 4.7625000000000002
+              40.640000000000001
+* 24 in Beam Pipe-2 Upstream Flange Vacuum
+RCC BP24bUFV   0.0 0.0 1901.5583 0.0 0.0 4.7625 29.5275
+* 24 in Beam Pipe-2
+RCC BP24b      0.0 0.0 1906.3208 0.0 0.0 239.07750000000001 30.48
+* 24 in Beam Pipe-2 Vacuum
+RCC BP24bV     0.0 0.0 1906.3208 0.0 0.0 239.0775 29.5275
+* 24 in Beam Pipe-2 Downstream Flange
+RCC BP24bDFl   0.0 0.0 2145.3982999999998 0.0 0.0 4.7625000000000002
+              40.640000000000001
+* 24 in Beam Pipe-2 Downstream Flange Vacuum
+RCC BP24bDFV   0.0 0.0 2145.3983 0.0 0.0 4.7625 29.5275
+* 24 in Beam Pipe-3 Upstream Flange
+RCC BP24cUFl   0.0 0.0 2150.1608000000001 0.0 0.0 6.0832999999999542
+              40.640000000000001
+* 24 in Beam Pipe-3 Upstream Flange Vacuum
+RCC BP24cUFV   0.0 0.0 2150.1608 0.0 0.0 6.0833 29.5275
+* 24 in Beam Pipe-3
+RCC BP24c      0.0 0.0 2156.2440999999999 0.0 0.0 378.05360000000007 30.48
+* 24 in Beam Pipe-3 Vacuum
+RCC BP24cV     0.0 0.0 2156.2441 0.0 0.0 378.0536 29.5275
+* 24 in Beam Pipe-4 Upstream Flange
+RCC BP24dUFl   0.0 0.0 2539.0601999999999 0.0 0.0 4.7625000000000002
+              40.640000000000001
+* 24 in Beam Pipe-4 Upstream Flange Vacuum
+RCC BP24dUFV   0.0 0.0 2539.0602 0.0 0.0 4.7625 29.5275
+* 24 in Beam Pipe-4
+RCC BP24d      0.0 0.0 2543.8227000000002 0.0 0.0 64.668399999999806 30.48
+* 24 in Beam Pipe-4 Vacuum
+RCC BP24dV     0.0 0.0 2543.8227 0.0 0.0 64.6684 29.5275
+* 24 in Bellows Upstream Flange
+RCC Be24iUFl   0.0 0.0 2613.2536 0.0 0.0 6.6979800000004346 40.640000000000001
+* 24 in Bellows Upstream Flange Vacuum
+RCC Be24iUFV   0.0 0.0 2613.2536 0.0 0.0 6.6979800000004 29.5275
+* 24 in Bellows
+RCC Be24i      0.0 0.0 2619.9515800000004 0.0 0.0 47.170339999999776
+              29.844999999999999
+* 24 in Bellows Vacuum
+RCC Be24iV     0.0 0.0 2619.95158 0.0 0.0 47.17034 29.5275
+* 24 in Bellows Downstream Flange
+RCC Be24iDFl   0.0 0.0 2667.12192 0.0 0.0 4.7625000000000002 40.640000000000001
+* 24 in Bellows Downstream Flange Vacuum
+RCC Be24iDFV   0.0 0.0 2667.12192 0.0 0.0 4.7625 29.5275
+* 24 in Beam Pipe-4 Downstream Flange
+RCC BP24dDFl   0.0 0.0 2608.4910999999997 0.0 0.0 4.7625000000000002
+              40.640000000000001
+* 24 in Beam Pipe-4 Downstream Flange Vacuum
+RCC BP24dDFV   0.0 0.0 2608.4911 0.0 0.0 4.7625 29.5275
+* 24 in Beam Pipe-3 Downstream Flange
+RCC BP24cDFl   0.0 0.0 2534.2977000000001 0.0 0.0 4.7625000000000002
+              40.640000000000001
+* 24 in Beam Pipe-3 Downstream Flange Vacuum
+RCC BP24cDFV   0.0 0.0 2534.2977 0.0 0.0 4.7625 29.5275
+* HMS Q1 Upper Shield Plate
+RPP hmsq1usp   -10.541 -2.54 3.2080199999999999 4.16052 139.69999999999999
+              193.03999999999999
+* HMS Q1 Lower Shield Plate
+RPP hmsq1lsp   -10.541 -2.54 -4.16052 -3.2080199999999999 139.69999999999999
+              193.03999999999999
+* SHMS Bender Upper Shield Plate
+RPP shmsbusp   -5.0749199999999997 0.0 2.0650200000000001 2.7000199999999999
+              139.69999999999999 215.90000000000001
+* SHMS Bender Lower Shield Plate
+RPP shmsblsp   -5.0749199999999997 0.0 -2.7000199999999999 -2.0650200000000001
+              139.69999999999999 215.90000000000001
+* SHMS Bender Shield Half Tube outer
+RCC shmsbsho   0.0 0.0 139.69999999999999 0.0 0.0 76.200000000000003 2.69875
+* SHMS Bender Shield Half Tube Inner
+RCC shmsbshi   0.0 0.0 139.69999999999999 0.0 0.0 76.200000000000003
+              2.0637500000000002
+YZP planex0    0.0
+* Target Vessel including outer Walls
+RCC TargetW    0.0 0.0 -5.0254 0.0 0.0 10.0508 2.5
+* Target inside the target vessel
+RCC Target     0.0 0.0 -5. 0.0 0.0 10. 2.4700000000000002
+* Magnetic Field in the beam pipe
+RCC MagField   0.0 0.0 125. 0.0 0.0 100. 2.06248
+* Titanium Bolts Row in the Nipple Flange Inner edge
+RCC NipBoltI   0.0 0.0 73.980040000000002 0.0 0.0 1.3004800000000012
+              2.2168666471
+* Flange 2 Bolt Outer ring
+RCC Fl2BltO    0.0 0.0 417.44900000000001 0.0 0.0 4.4830999999999994 6.091139404
+* Flange 2 Bolt Inner ring
+RCC Fl2BltI    0.0 0.0 417.44900000000001 0.0 0.0 4.4830999999999994 5.656360596
+* Flange 3 Bolt Outer ring
+RCC Fl3BltO    0.0 0.0 868.68000000000006 0.0 0.0 4.8387000000000002
+              13.0410088904
+* Flange 3 Bolt Inner ring
+RCC Fl3BltI    0.0 0.0 868.68000000000006 0.0 0.0 4.8387000000000002
+              12.3589911096
+* Flange 4 Bolt Outer ring
+RCC Fl4BltO    0.0 0.0 886.42190000000005 0.0 0.0 4.7625000000000002 12.94054971
+* Flange 4 Bolt Inner ring
+RCC Fl4BltI    0.0 0.0 886.42190000000005 0.0 0.0 4.7625000000000002 12.45945029
+* Flange 5 Bolt Outer ring
+RCC Fl5BltO    0.0 0.0 1087.3994 0.0 0.0 2.8574999999999999 20.9926413161
+* Flange 5 Bolt Inner ring
+RCC Fl5BltI    0.0 0.0 1087.3994 0.0 0.0 2.8574999999999999 19.6473586839
+* Flange 6 Bolt Outer ring
+RCC Fl6BltO    0.0 0.0 1090.2569000000001 0.0 0.0 3.8100000000000001
+              28.2869746301
+* Flange 6 Bolt Inner ring
+RCC Fl6BltI    0.0 0.0 1090.2569000000001 0.0 0.0 3.8100000000000001
+              25.6880253699
+* Flange 7 Bolt Outer ring
+RCC Fl7BltO    0.0 0.0 1110.5261 0.0 0.0 3.8100000000000001 28.2869746301
+* Flange 7 Bolt Inner ring
+RCC Fl7BltI    0.0 0.0 1110.5261 0.0 0.0 3.8100000000000001 25.6880253699
+* Flange 8 Bolt Outer ring
+RCC Fl8BltO    0.0 0.0 1265.4915000000001 0.0 0.0 7.6834999999999996
+              20.593817884
+* Flange 8 Bolt Inner ring
+RCC Fl8BltI    0.0 0.0 1265.4915000000001 0.0 0.0 7.6834999999999996
+              20.046182116
+* Flange 9 Bolt Outer ring
+RCC Fl9BltO    0.0 0.0 1648.46 0.0 0.0 9.5250000000000004 27.6626397261
+* Flange 9 Bolt Inner ring
+RCC Fl9BltI    0.0 0.0 1648.46 0.0 0.0 9.5250000000000004 26.9473602739
+* Flange 10 Bolt Outer ring
+RCC Fl10BltO   0.0 0.0 1896.7957999999999 0.0 0.0 9.5250000000000004
+              39.7421665738
+* Flange 10 Bolt Inner ring
+RCC Fl10BltI   0.0 0.0 1896.7957999999999 0.0 0.0 9.5250000000000004
+              35.1878334262
+* Flange 11 Bolt Outer ring
+RCC Fl11BltO   0.0 0.0 2145.3982999999998 0.0 0.0 10.845799999999999
+              39.4648535484
+* Flange 11 Bolt Inner ring
+RCC Fl11BltI   0.0 0.0 2145.3982999999998 0.0 0.0 10.845799999999999
+              35.4651464516
+* Flange 12 Bolt Outer ring
+RCC Fl12BltO   0.0 0.0 2534.2977000000001 0.0 0.0 9.5250000000000004
+              39.7421665738
+* Flange 12 Bolt Inner ring
+RCC Fl12BltI   0.0 0.0 2534.2977000000001 0.0 0.0 9.5250000000000004
+              35.1878334262
+* Flange 13 Bolt Outer ring
+RCC Fl13BltO   0.0 0.0 2608.4910999999997 0.0 0.0 11.460479999999999
+              39.3575918997
+* Flange 13 Bolt Inner ring
+RCC Fl13BltI   0.0 0.0 2608.4910999999997 0.0 0.0 11.460479999999999
+              35.5724081003
+* Cryo Stat Shell Plane 1 (outer vertical)
+PLA CSSpl1     -5.3449999999999989 0.0 0.65624626728533997 36.128959999999999
+              0.0 117.17528
+* Cryo Stat Shell Plane 1 (inner vertical)
+PLA CSSpl2     -2.3010000000000002 0.0 0.12058397103033618 -6.4744599999999997
+              0.0 122.40514
+* Cryo Stat Shell Plane 1 (face vertical)
+PLA CSSpl3     -16.773 0.0 -136.63600242836299 36.128959999999999 0.0 117.17528
+* Cryo Stat Shell Plane 1 (back face vertical)
+PLA CSSpl4     -19.817 0.0 -161.41121619399871 49.705259999999996 0.0
+              227.75164000000001
+XZP CSSpl5     -36.398200000000003
+XZP CSSpl6     41.483280000000001
+* Yoke Steel Shell Plane 1 (outer vertical)
+PLA YSpl1      -2.8789999999999978 0.0 0.35353555129025338 88.859360000000009
+              0.0 136.12622000000002
+* Yoke Steel Shell Plane 2 (inner vertical)
+PLA YSpl2      -1.2389999999999999 0.0 0.064915468538565627 3.6957000000000004
+              0.0 146.58086
+* Yoke Steel Shell Plane 3 (face vertical)
+PLA YSpl3      -33.529000000000003 0.0 -273.12775534499525 88.859360000000009
+              0.0 136.12622000000002
+* Yoke Steel Shell Plane 4 (back plane vertical)
+PLA YSpl4      -35.168999999999997 0.0 -286.37614285714261 96.172020000000003
+              0.0 195.67651999999998
+* Yoke Steel Shell Plane 5 (middle vertical)
+PLA YSpl5      -2.8780000000000001 0.0 0.35327492962552243 34.526220000000002
+              0.0 142.79626000000002
+* Bottom plane
+XZP YSpl6      -59.999879999999997
+* Top plane
+XZP YSpl7      59.999879999999997
+* Lower Gap plane
+XZP YSpl8      -17.500599999999999
+* Upper Gap plane
+XZP YSpl9      17.500599999999999
+* Additional Yoke Plane 1 (inner vertical) - exact copy of CSSpl2 !
+PLA AYSpl1     -2.3010000000000002 0.0 0.12058397103033618 -6.4744599999999997
+              0.0 122.40514
+* Additional Yoke Steel Plane 2 (inner vertical)
+PLA AYSpl2     -0.58700000000000019 0.0 0.014571362117816219 -10.203180000000001
+              0.0 148.28774000000001
+* Upper Gap AYSpl2 plane
+XZP AYSpl3     6.9138799999999998
+* Lower Gap AYSpl2 plane
+XZP AYSpl4     -6.9138799999999998
+* Additional Yoke Steel Plane 5 (back plane vertical)
+PLA AYSpl5     -1.9970000000000001 0.0 -37.981038095236663 -3.6398200000000003
+              0.0 176.46142
+* Cryo Stat Hole Plane 1 (outer vertical)
+PLA CSSHpl1    -5.2559999999999985 0.0 0.63441350327247648 22.440900000000003
+              0.0 118.85422
+* Cryo Stat Hole Plane 2 (Inner vertical)
+PLA CSSHpl2    -2.5359999999999996 0.0 0.14656888260899284 6.3576200000000007
+              0.0 120.83033999999999
+* Cryo Stat Hole Plane 3 (upper horizontal)
+PLA CSSHpl3    1.482 -741.2 12.076 22.440900000000003 9.3726000000000003
+              118.85422
+* Cryo Stat Hole Plane 3 (upper horizontal)
+PLA CSSHpl4    -1.482 -741.2 -12.076 22.440900000000003 -9.3726000000000003
+              118.85422
+* Copper Coil Plane 1 (outer vertical)
+PLA CCpl1      -4.532 0.0 0.55646231373611499 27.017980000000001 0.0 126.42596
+* Copper Coil Plane 2 (inner vertical)
+PLA CCpl2      -1.9510000000000003 0.0 0.10225114167517328 3.2943799999999999
+              0.0 129.33933999999999
+* Copper Coil Plane 3 (face vertical)
+PLA CCpl3      -9.3399999999999999 0.0 -76.055448997384573 27.017980000000001
+              0.0 126.42596
+* Copper Coil Plane 4 (back vertical)
+PLA CCpl4      -11.920999999999999 0.0 -97.136186602870254 38.529260000000001
+              0.0 220.17735999999999
+* Copper Coil Plane 5 (cut vertical)
+PLA CCpl5      -9.7139999999999986 0.0 -79.096224643755363 28.68422 0.0
+              139.98702
+* Copper Coil Plane 5 (cut vertical)
+PLA CCpl6      -11.545 0.0 -93.996491537376158 36.84778 0.0 206.4639
+* Bottom horizontal plane for the Coils
+XZP CCpl7      -28.1432
+* Lower cut horizontal plane for the Coils
+XZP CCpl8      -13.70838
+* Upper cut horizontal plane for the Coils
+XZP CCpl9      13.70838
+* Top horizontal plane for the Coils
+XZP CCpl10     28.1432
+* Bottom horizontal plane for the Coils (inside)
+XZP CCpl7i     -26.695399999999999
+* Top horizontal plane for the Coils (inside)
+XZP CCpl10i    26.695399999999999
+* Copper Coil Plane 1 (outer vertical) (inside)
+PLA CCpl1i     -4.532 0.0 0.55646231373611499 25.580971784586414 0.0
+              126.60240327369965
+* Copper Coil Plane 2 (inner vertical) (inside)
+PLA CCpl2i     -1.9510000000000003 0.0 0.10225114167517328 4.7401957023661172
+              0.0 129.26356536841681
+* SHMS Bender Upper Shield Plate Joint
+RPP shmsbus1   -5.0749199999999997 -2.54 2.7000199999999999 3.2080199999999999
+              139.69999999999999 193.03999999999999
+* SHMS Bender Lower Shield Plate Joint
+RPP shmsbls1   -5.0749199999999997 -2.54 -3.2080199999999999 -2.7000199999999999
+              139.69999999999999 193.03999999999999
+* Cryo inner wall Plane i1 SS1010 layer 1 at 0.187 inch distance
+PLA CSSH1i1    -5.2559999999999985 0.0 0.63441350327247648 22.912457327282514
+              0.0 118.7973017473373
+* Cryo inner wall Plane i1 SS1010 layer 2 at 0.187+0.065 inch distance
+PLA CSSH1i2    -5.2559999999999985 0.0 0.63441350327247648 23.076367628209589
+              0.0 118.77751732796257
+* Cryo inner wall Plane i1 SS1010 layer 3 at 0.187+0.065+0.330 inch distance
+PLA CSSH1i3    -5.2559999999999985 0.0 0.63441350327247648 23.908527617531671
+              0.0 118.67707335267546
+* Cryo inner wall Plane i2 SS1010 layer 1 at 0.187 inch distance
+PLA CSSH2i1    -2.5359999999999996 0.0 0.14656888260899284 5.8834313052385001
+              0.0 120.85774587820859
+* Cryo inner wall Plane i2 SS1010 layer 2 at 0.187+0.065 inch distance
+PLA CSSH2i2    -2.5359999999999996 0.0 0.14656888260899284 5.7186063578615078
+              0.0 120.86727198560732
+* Cryo inner wall Plane i2 SS1010 layer 3 at 0.187+0.065+0.330 inch distance
+PLA CSSH2i3    -2.5359999999999996 0.0 0.14656888260899284 4.8818027788706244
+              0.0 120.91563530009307
+* Cryo inner wall Plane i3 SS1010 layer 1 at 0.187 inch distance
+PLA CSSH3i1    1.482 -741.2 12.076 22.4399504242501 9.847516022826257
+              118.84648243133884
+* Cryo inner wall Plane i3 SS1010 layer 2 at 0.187+0.065 inch distance
+PLA CSSH3i2    1.482 -741.2 12.076 22.439620357812966 10.012593784771211
+              118.84379290212506
+* Cryo inner wall Plane i3 SS1010 layer 3 at 0.187+0.065+0.330 inch distance
+PLA CSSH3i3    1.482 -741.2 12.076 22.437944635901371 10.850680883876372
+              118.83013836919361
+* Cryo inner wall Plane i4 SS1010 layer 1 at 0.187 inch distance
+PLA CSSH4i1    -1.482 -741.2 -12.076 22.4399504242501 -9.847516022826257
+              118.84648243133884
+* Cryo inner wall Plane i4 SS1010 layer 2 at 0.187+0.065 inch distance
+PLA CSSH4i2    -1.482 -741.2 -12.076 22.439620357812966 -10.012593784771211
+              118.84379290212506
+* Cryo inner wall Plane i4 SS1010 layer 3 at 0.187+0.065+0.330 inch distance
+PLA CSSH4i3    -1.482 -741.2 -12.076 22.437944635901371 -10.850680883876372
+              118.83013836919361
+* Cryo outer wall Plane i1 SS1010 layer 1 at 1.440 inch distance
+PLA CSSO1i1    -5.3449999999999989 0.0 0.65624626728533997 35.019689486830494
+              0.0 117.31147357037928
+* Cryo outer wall Plane i2 SS1010 layer 1 at 0.375 inch distance
+PLA CSSO2i1    -2.3010000000000002 0.0 0.12058397103033618 -5.5232652314086561
+              0.0 122.35529261085615
+* Cryo outer wall Plane i2 SS1010 layer 2 at 0.375+0.065 inch distance
+PLA CSSO2i2    -2.3010000000000002 0.0 0.12058397103033618 -5.3583914715194902
+              0.0 122.34665239673788
+* Cryo outer wall Plane i2 SS1010 layer 2 at 0.375+0.065 inch distance
+PLA CSSO2i3    -2.3010000000000002 0.0 0.12058397103033618 -5.3583914715194902
+              0.0 122.34665239673788
+* Cryo outer wall Plane i3 front face SS1010 layer 1 at 1.440 inch distance
+PLA CSSO3i1    -16.773 0.0 -136.63600242836299 37.057397638773658 0.0
+              124.73850705932517
+* Cryo outer wall Plane i4 back face SS1010 layer 1 at 1.440 inch distance
+PLA CSSO4i1    -19.817 0.0 -161.41121619399871 49.259550690127547 0.0
+              224.12129828452842
+* Cryo outer wall Plane i6 top plane SS1010 layer 1 at 1.440 inch distance
+XZP CSSO6i1    37.825680000000006
+* Cryo outer wall Plane i5 bottom plane SS1010 layer 1 at 1.440 inch distance
+XZP CSSO5i1    -32.740600000000001
+XYP BLStart    69.85
+* Cryostat Cutout Outer cylinder
+RCC CSSCutOC   0.0 0.0 120. 0.0 0.0 115. 2.69875
+* Crystat Cutout Outer Box
+RPP CSSCutOB   -7.5 0.0 -2.7000199999999999 2.7000199999999999 120. 235.
+* Copper Coil Plane 2 (inner vertical) (inside)
+PLA CCpl2i1    -1.9510000000000003 0.0 0.10225114167517328 3.1497984297633881
+              0.0 129.34691746315832
+* Copper Coil Plane 2 (inner vertical) (inside)
+PLA CCpl2i2    -1.9510000000000003 0.0 0.10225114167517328 -0.18065072323084477
+              0.0 129.52146499169996
+* Cryostat Cutout Outer inside cylinder (0.075 inch thick)
+RCC CSSCuOCi   0.0 0.0 120. 0.0 0.0 115. 2.8892500000000001
+* Crystat Cutout Outer Box inside (0.075 inch thick)
+RPP CSSCuOBi   -7.5 0.0 -2.89052 2.89052 120. 235.
+* Cryo outer wall Plane i1 SS1010 layer 1 at 1.440 inch distance
+PLA CSSO1i2    -5.3449999999999989 0.0 0.65624626728533997 29.977550790605445
+              0.0 117.93053525392138
+* Cryo outer wall Plane i1 SS1010 layer 1 at 1.440 inch distance
+PLA CSSO1i3    -5.3449999999999989 0.0 0.65624626728533997 27.456481442492922
+              0.0 118.24006609569246
+* Void Vacuum body
+SPH Void       0.0 0.0 0.0 9500.
+* Vacuum Dumpline to remove air
+RCC DumpVac    0.0 0.0 2680. 0.0 0.0 820. 40.640000000000001
+RPP Cam_out    -190.3 -109. -397. -292.9 2548. 2680.
+RPP Cam_top1   -148.75 -138.55 -292.9 -270.6 2607.95 2653.7
+RPP Cam_top2   -158.87 -138.55 -292.9 -270.6 2597.8 2607.95
+RPP Cam_top3   -169.07 -148.75 -292.9 -270.6 2650.45 2660.61
+RPP Cam_in     -170. -129.3 -394.6 -315.8 2588.5 2669.9
+RPP Cam_s1     -170. -109. -318.3 -315.8 2568.2 2680.
+RPP Cam_s2     -170. -154.75 -318.3 -315.8 2607.95 2619.95
+RPP Cam_s3     -170. -154.75 -318.3 -315.8 2638.45 2650.45
+RPP Cam_s5     -170. -160.75 -318.3 -315.8 2639.45 2649.45
+RPP Cam_s4     -170. -160.75 -318.3 -315.8 2608.95 2618.95
+RPP Cam_p1     -170. -139.5 -394.6 -328.4 2598.7 2659.7
+RPP Cam_a1     -170. -129.3 -397. -394.6 2588.5 2669.9
+RPP Cam_a2     -168.8 -140.7 -394.6 -329.6 2599.9 2658.5
+RPP Cam_d      -154.8 -154.7 -394.6 -329.6 2599.9 2658.5
+RPP Cam_p2     -168.7 -163.8 -394.6 -329.7 2599.9 2658.5
+RPP Cam_p3     -163.8 -140.7 -394.6 -329.7 2600. 2605.
+RCC Cam_a3i    -154.75 -329.6 2613.95 0.0 200. 0.0 4.8
+RCC Cam_a3o    -154.75 -329.6 2613.95 0.0 200. 0.0 6.
+RCC Cam_a4i    -154.75 -329.6 2644.45 0.0 200. 0.0 4.8
+RCC Cam_a4o    -154.75 -329.6 2644.45 0.0 200. 0.0 6.
+RCC Cam_l      -154.75 -350. 2613.95 0.0 15. 0.0 4.8
+RCC Cam_r      -154.75 -350. 2644.45 0.0 15. 0.0 4.8
+RPP Shield     -180. -80. -397. -264.92 2210. 2340.
+PLA Sh_p1      0.0506 0.0 -0.9987 -134.97 0.0 2325.38
+PLA Sh_p2      -0.0506 0.0 0.9987 -131.63 0.0 2259.42
+PLA Sh_p3      -0.9987 0.0 -0.0506 -100.32 0.0 2294.07
+PLA Sh_p4      0.9987 0.0 0.0506 -166.28 0.0 2290.73
+RCC opipe01    0.0 0.0 69.85 0.0 0.0 1.27 3.50012
+RCC ipipe01    0.0 0.0 69.85 0.0 0.0 1.27 1.84912
+RCC opipe02    0.0 0.0 71.12 0.0 0.0 7.7724 2.14884
+RCC ipipe02    0.0 0.0 71.12 0.0 0.0 7.7724 1.84912
+RCC opipe03    0.0 0.0 78.8924 0.0 0.0 179.6288 2.54
+RCC ipipe03    0.0 0.0 78.8924 0.0 0.0 179.6288 2.06248
+RCC opipe04    0.0 0.0 258.5212 0.0 0.0 1.5748 3.65252
+RCC ipipe04    0.0 0.0 258.5212 0.0 0.0 1.5748 2.06502
+RCC opipe05    0.0 0.0 260.096 0.0 0.0 157.353 3.65252
+RCC ipipe05    0.0 0.0 260.096 0.0 0.0 157.353 3.13436
+RCC opipe06    0.0 0.0 417.449 0.0 0.0 1.7272 7.06628
+RCC ipipe06    0.0 0.0 417.449 0.0 0.0 1.7272 3.1369
+RCC opipe07    0.0 0.0 419.1762 0.0 0.0 3.4925 6.35
+RCC ipipe07    0.0 0.0 419.1762 0.0 0.0 3.4925 4.7625
+RCC opipe08    0.0 0.0 422.6687 0.0 0.0 381.9525 6.35
+RCC ipipe08    0.0 0.0 422.6687 0.0 0.0 381.9525 5.715
+RCC opipe09    0.0 0.0 804.6212 0.0 0.0 2.2225 9.017
+RCC ipipe09    0.0 0.0 804.6212 0.0 0.0 2.2225 6.477
+RCC opipe10    0.0 0.0 806.8437 0.0 0.0 61.8363 8.89
+RCC ipipe10    0.0 0.0 806.8437 0.0 0.0 61.8363 8.255
+RCC opipe11    0.0 0.0 868.68 0.0 0.0 2.286 13.6525
+RCC ipipe11    0.0 0.0 868.68 0.0 0.0 2.286 8.255
+RCC opipe12    0.0 0.0 870.9787 0.0 0.0 2.54 13.6525
+RCC ipipe12    0.0 0.0 870.9787 0.0 0.0 2.54 9.9441
+RCC opipe13    0.0 0.0 873.5187 0.0 0.0 12.9032 10.16
+RCC ipipe13    0.0 0.0 873.5187 0.0 0.0 12.9032 9.9441
+RCC opipe14    0.0 0.0 886.4219 0.0 0.0 2.54 13.6525
+RCC ipipe14    0.0 0.0 886.4219 0.0 0.0 2.54 9.9441
+RCC opipe15    0.0 0.0 888.9619 0.0 0.0 2.8575 13.6525
+RCC ipipe15    0.0 0.0 888.9619 0.0 0.0 2.8575 10.795
+RCC opipe16    0.0 0.0 891.8194 0.0 0.0 195.58 13.6525
+RCC ipipe16    0.0 0.0 891.8194 0.0 0.0 195.58 12.7
+RCC opipe17    0.0 0.0 1087.3994 0.0 0.0 2.8575 22.86
+RCC ipipe17    0.0 0.0 1087.3994 0.0 0.0 2.8575 12.7
+RCC opipe18    0.0 0.0 1090.2569 0.0 0.0 3.81 29.845
+RCC ipipe18    0.0 0.0 1090.2569 0.0 0.0 3.81 15.24
+RCC opipe19    0.0 0.0 1110.5261 0.0 0.0 3.81 29.845
+RCC ipipe19    0.0 0.0 1110.5261 0.0 0.0 3.81 15.16126
+RCC opipe20    0.0 0.0 1114.3361 0.0 0.0 151.1554 16.1925
+RCC ipipe20    0.0 0.0 1114.3361 0.0 0.0 151.1554 15.16126
+RCC opipe21    0.0 0.0 1265.4915 0.0 0.0 2.8575 22.86
+RCC ipipe21    0.0 0.0 1265.4915 0.0 0.0 2.8575 15.16126
+RCC opipe22    0.0 0.0 1268.349 0.0 0.0 4.826 22.86
+RCC ipipe22    0.0 0.0 1268.349 0.0 0.0 4.826 15.875
+RCC opipe23    0.0 0.0 1273.175 0.0 0.0 375.285 22.86
+RCC ipipe23    0.0 0.0 1273.175 0.0 0.0 375.285 21.9075
+RCC opipe24    0.0 0.0 1648.46 0.0 0.0 4.7625 30.48
+RCC ipipe24    0.0 0.0 1648.46 0.0 0.0 4.7625 21.9075
+RCC opipe25    0.0 0.0 1653.2225 0.0 0.0 4.7625 30.48
+RCC ipipe25    0.0 0.0 1653.2225 0.0 0.0 4.7625 22.86
+RCC opipe26    0.0 0.0 1657.985 0.0 0.0 238.8108 30.48
+RCC ipipe26    0.0 0.0 1657.985 0.0 0.0 238.8108 29.5275
+RCC opipe27    0.0 0.0 1896.7958 0.0 0.0 4.7625 40.64
+RCC ipipe27    0.0 0.0 1896.7958 0.0 0.0 4.7625 29.5275
+RCC opipe28    0.0 0.0 1901.5583 0.0 0.0 4.7625 40.64
+RCC ipipe28    0.0 0.0 1901.5583 0.0 0.0 4.7625 29.5275
+RCC opipe29    0.0 0.0 1906.3208 0.0 0.0 239.0775 30.48
+RCC ipipe29    0.0 0.0 1906.3208 0.0 0.0 239.0775 29.5275
+RCC opipe30    0.0 0.0 2145.3983 0.0 0.0 4.7625 40.64
+RCC ipipe30    0.0 0.0 2145.3983 0.0 0.0 4.7625 29.5275
+RCC opipe31    0.0 0.0 2150.1608 0.0 0.0 6.0833 40.64
+RCC ipipe31    0.0 0.0 2150.1608 0.0 0.0 6.0833 29.5275
+RCC opipe32    0.0 0.0 2156.2441 0.0 0.0 378.0536 30.48
+RCC ipipe32    0.0 0.0 2156.2441 0.0 0.0 378.0536 29.5275
+RCC opipe33    0.0 0.0 2534.2977 0.0 0.0 4.7625 40.64
+RCC ipipe33    0.0 0.0 2534.2977 0.0 0.0 4.7625 29.5275
+RCC opipe34    0.0 0.0 2539.0602 0.0 0.0 4.7625 40.64
+RCC ipipe34    0.0 0.0 2539.0602 0.0 0.0 4.7625 29.5275
+RCC opipe35    0.0 0.0 2543.8227 0.0 0.0 64.6684 30.48
+RCC ipipe35    0.0 0.0 2543.8227 0.0 0.0 64.6684 29.5275
+RCC opipe36    0.0 0.0 2608.4911 0.0 0.0 4.7625 40.64
+RCC ipipe36    0.0 0.0 2608.4911 0.0 0.0 4.7625 29.5275
+RCC opipe37    0.0 0.0 2613.2536 0.0 0.0 6.69798 40.64
+RCC ipipe37    0.0 0.0 2613.2536 0.0 0.0 6.69798 29.5275
+RCC opipe38    0.0 0.0 2619.95158 0.0 0.0 47.17034 29.845
+RCC ipipe38    0.0 0.0 2619.95158 0.0 0.0 47.17034 29.5275
+RCC opipe39    0.0 0.0 2667.12192 0.0 0.0 4.7625 40.64
+RCC ipipe39    0.0 0.0 2667.12192 0.0 0.0 4.7625 29.5275
+END
+* Black hole
+BLKBODY      5 +BlkBody -Void
+BEAM_1       5 +opipe01 -ipipe01
+BEAM_6       5 +opipe06 -ipipe06
+BEAM_11      5 +opipe11 -ipipe11
+BEAM_14      5 +opipe14 -ipipe14
+BEAM_17      5 +opipe17 -ipipe17
+BEAM_18      5 +opipe18 -ipipe18
+BEAM_19      5 +opipe19 -ipipe19
+BEAM_21      5 +opipe21 -ipipe21
+BEAM_24      5 +opipe24 -ipipe24
+BEAM_27      5 +opipe27 -ipipe27
+               | +opipe30 -ipipe30
+               | +opipe33 -ipipe33
+               | +opipe36 -ipipe36
+BEAM_39      5 +opipe39 -ipipe39
+BEAM_AL      5 +opipe02 -ipipe02
+               | +opipe03 -ipipe03
+               | +opipe04 -ipipe04
+               | +opipe05 -ipipe05
+               | +opipe07 -ipipe07
+               | +opipe08 -ipipe08
+               | +opipe09 -ipipe09
+               | +opipe10 -ipipe10
+               | +opipe15 -ipipe15
+               | +opipe16 -ipipe16
+               | +opipe20 -ipipe20
+               | +opipe22 -ipipe22
+               | +opipe23 -ipipe23
+               | +opipe25 -ipipe25
+               | +opipe26 -ipipe26
+               | +opipe28 -ipipe28
+               | +opipe29 -ipipe29
+               | +opipe31 -ipipe31
+               | +opipe32 -ipipe32
+               | +opipe34 -ipipe34
+               | +opipe35 -ipipe35
+BEA304SS     5 +opipe37 -ipipe37
+               | +opipe38 -ipipe38
+BEA347SS     5 +opipe12 -ipipe12
+               | +opipe13 -ipipe13
+BEAMLVAC     5 +ipipe01
+               | +ipipe02
+               | +ipipe03 -MagField
+               | +ipipe04
+               | +ipipe05
+               | +ipipe06
+               | +ipipe07
+               | +ipipe08
+               | +ipipe09
+               | +ipipe10
+               | +ipipe11
+               | +ipipe12
+               | +ipipe13
+               | +ipipe14
+               | +ipipe15
+               | +ipipe16
+               | +ipipe17
+               | +ipipe18
+               | +ipipe19
+               | +ipipe20
+               | +ipipe21
+               | +ipipe22
+               | +ipipe23
+               | +ipipe24
+               | +ipipe25
+               | +ipipe26
+               | +ipipe27
+               | +ipipe28
+               | +ipipe29
+               | +ipipe30
+               | +ipipe31
+               | +ipipe32
+               | +ipipe33
+               | +ipipe34
+               | +ipipe35
+               | +ipipe36
+               | +ipipe37
+               | +ipipe38
+               | +ipipe39
+               | +AlGaVaPV
+               | +AlGaVaBV
+               | +BeamIn
+               | +IntCha -TargetW -( +bender_o -bend_1 -bend_2 -bend_3 -bend_4 -bend_5 )
+               | +( +bender_i +IntCha +bend_9 -bend_2 )
+* Aluminum Gate Valve Box
+ALGAVABX     5 +AlGaVaBx -AlGaVaBV -AlGaVaPV
+* SHMS Min Angle
+SHMS_t       5 +minang_o -minang_i
+BENDER       5 +bender_o -( +bender_i +bend_9 ) -bend_1 -bend_2 -bend_3 -bend_4 -bend_5 -bend_6
+               -bend_7 -bend_8
+* Target Vessel
+TARGETW      5 +TargetW -Target
+* Liquid Target inside the target vessel
+TARGET       5 +Target
+* Magnetic Field in the beam pipe
+MAGFIELD     5 +MagField
+* Yoke Steel
+YOKEST       5 +YSpl2 +YSpl3 +YSpl7 -YSpl1 -YSpl4 -YSpl5 -YSpl9
+               | +YSpl2 +YSpl3 +YSpl5 +YSpl7 -YSpl1 -YSpl4 -YSpl9
+               | +YSpl2 +YSpl3 +YSpl5 +YSpl9 -YSpl1 -YSpl4 -YSpl8
+               | +YSpl2 +YSpl3 +YSpl5 +YSpl8 -YSpl1 -YSpl4 -YSpl6
+               | +YSpl2 +YSpl3 +YSpl8 -YSpl1 -YSpl4 -YSpl5 -YSpl6
+* Additional Yoke-1 1010 Steel
+AYOKEST      5 +YSpl3 +YSpl7 +AYSpl1 -YSpl1 -YSpl2 -YSpl4 -YSpl5 -YSpl9
+               | +YSpl3 +YSpl8 +AYSpl1 -YSpl1 -YSpl2 -YSpl4 -YSpl5 -YSpl6
+* Additional Yoke-2
+AYOK2ST      5 +YSpl3 +YSpl7 +AYSpl2 -AYSpl1 -AYSpl3 -AYSpl5
+               | +YSpl3 +AYSpl2 +AYSpl4 -YSpl6 -AYSpl1 -AYSpl5
+* Vacuum Hole in the Cryostat
+CRYOSH       5 +CSSpl3 +CSSHpl2 +CSSHpl4 -CSSpl4 -CSSHpl1 -CSSHpl3
+* Copper Coil in the Cryostat
+CRYOCC      55 +CCpl3 +CCpl5 +CCpl9 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl6 -CCpl8
+               | +CCpl2 +CCpl3 +CCpl5 +CCpl9 -CCpl4 -CCpl6 -CCpl8 -CCpl1i -CCpl2i
+               | +CCpl3 +CCpl5 +CCpl6 +CCpl9 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl8
+               | +CCpl2 +CCpl3 +CCpl5 +CCpl6 +CCpl9 -CCpl4 -CCpl8 -CCpl1i -CCpl2i
+               | +CCpl2 +CCpl3 +CCpl9 -CCpl4 -CCpl5 -CCpl6 -CCpl8 -CCpl1i -CCpl2i
+               | +CCpl3 +CCpl9 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl5 -CCpl6 -CCpl8
+               | +CCpl3 +CCpl5 +CCpl6 +CCpl10 +CCpl2i -CCpl4 -CCpl10i -CCpl1i
+               | +CCpl2 +CCpl3 +CCpl5 +CCpl6 +CCpl10i -CCpl4 -CCpl9 -CCpl1i -CCpl2i
+               | +CCpl3 +CCpl5 +CCpl6 +CCpl10i +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl9
+               | +CCpl3 +CCpl5 +CCpl6 +CCpl8 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl7i
+               | +CCpl3 +CCpl5 +CCpl6 +CCpl7i +CCpl2i -CCpl4 -CCpl7 -CCpl1i
+               | +CCpl2 +CCpl3 +CCpl5 +CCpl6 +CCpl8 -CCpl4 -CCpl7i -CCpl1i -CCpl2i
+               | +CCpl3 +CCpl5 +CCpl6 +CCpl10 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl10i
+               | +CCpl2 +CCpl3 +CCpl5 +CCpl6 +CCpl10 -CCpl4 -CCpl10i -CCpl1i -CCpl2i
+               | +CCpl3 +CCpl5 +CCpl6 +CCpl7i +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl7
+               | +CCpl2 +CCpl3 +CCpl5 +CCpl6 +CCpl7i -CCpl4 -CCpl7 -CCpl1i -CCpl2i
+               | +CCpl2 +CCpl3 +CCpl10i -CCpl4 -CCpl5 -CCpl6 -CCpl9 -CCpl1i -CCpl2i
+               | +CCpl2 +CCpl3 +CCpl8 -CCpl4 -CCpl5 -CCpl6 -CCpl7i -CCpl1i -CCpl2i
+               | +CCpl2 +CCpl3 +CCpl10 -CCpl4 -CCpl5 -CCpl6 -CCpl10i -CCpl1i -CCpl2i
+               | +CCpl2 +CCpl3 +CCpl7i -CCpl4 -CCpl5 -CCpl6 -CCpl7 -CCpl1i -CCpl2i
+               | +CCpl3 +CCpl10 +CCpl2i -CCpl4 -CCpl5 -CCpl6 -CCpl10i -CCpl1i
+               | +CCpl3 +CCpl7i +CCpl2i -CCpl4 -CCpl5 -CCpl6 -CCpl7 -CCpl1i
+               | +CCpl3 +CCpl7i +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl5 -CCpl6 -CCpl7
+               | +CCpl3 +CCpl10 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl5 -CCpl6 -CCpl10i
+               | +CCpl3 +CCpl10i +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl5 -CCpl6 -CCpl9
+               | +CCpl3 +CCpl8 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl5 -CCpl6 -CCpl7i
+* Cryostat Inner Wall 1010 Steel
+CRYOIN      55 +CSSpl3 +CSSHpl1 +CSSHpl2 +CSSHpl3 +CSSHpl4 -CSSpl4 -CSSH1i1 -CSSH3i1
+               | +CSSpl3 +CSSHpl2 +CSSHpl3 +CSSHpl4 -CSSpl4 -CSSHpl1 -CSSH3i1
+               | +CSSpl3 +CSSHpl3 +CSSHpl4 +CSSH2i1 -CSSpl4 -CSSHpl1 -CSSHpl2 -CSSH3i1
+               | +CSSpl3 +CSSHpl4 +CSSH2i1 -CSSpl4 -CSSHpl1 -CSSHpl2 -CSSHpl3
+               | +CSSpl3 +CSSH2i1 +CSSH4i1 -CSSpl4 -CSSHpl1 -CSSHpl2 -CSSHpl3 -CSSHpl4
+               | +CSSpl3 +CSSHpl2 +CSSH4i1 -CSSpl4 -CSSHpl1 -CSSHpl3 -CSSHpl4
+               | +CSSpl3 +CSSHpl1 +CSSHpl2 +CSSH4i1 -CSSpl4 -CSSHpl3 -CSSHpl4 -CSSH1i1
+               | +CSSpl3 +CSSHpl1 +CSSHpl2 +CSSHpl4 -CSSpl4 -CSSHpl3 -CSSH1i1
+* Cryostat Inner Wall Copper
+CRYOIN1     55 +CSSpl3 +CSSH2i2 +CSSH3i1 -CSSpl4 -CSSH1i2 -CSSH3i2
+               | +CSSpl3 +CSSH2i2 +CSSH4i2 -CSSpl4 -CSSH2i1 -CSSH3i1
+               | +CSSpl3 +CSSH2i1 +CSSH4i2 -CSSpl4 -CSSH1i2 -CSSH4i1
+               | +CSSpl3 +CSSH1i1 +CSSH4i1 -CSSpl4 -CSSH1i2 -CSSH3i1
+* Cryostat Inner Layer 2 1010 Steel
+CRYOIN2     55 +CSSpl3 +CSSH2i3 +CSSH3i2 -CSSpl4 -CSSH1i3 -CSSH3i3
+               | +CSSpl3 +CSSH2i3 +CSSH4i2 -CSSpl4 -CSSH2i2 -CSSH3i2
+               | +CSSpl3 +CSSH2i3 +CSSH4i3 -CSSpl4 -CSSH1i3 -CSSH4i2
+               | +CSSpl3 +CSSH1i2 +CSSH4i2 -CSSpl4 -CSSH1i3 -CSSH3i2
+* Stainless Steel 1010 back wall of the Cryostat
+CRYOOS1     55 +CSSpl2 +CSSpl6 +CSSH1i3 +CSSH2i3 +CSSO4i1 -CSSpl1 -CSSpl4 -CSSpl5
+               | -CSSCutOB -CSSCutOC +CSSpl2 +CSSpl6 +CSSO4i1 -CSSpl4 -CSSpl5 -CSSH2i3
+               | +CSSH2i3 +CSSO4i1 -CSSpl4 -CSSpl5 -CSSH1i3 -CSSH4i3
+               | +CSSpl6 +CSSH2i3 +CSSH3i3 +CSSO4i1 -CSSpl4 -CSSH1i3
+               | +CSSpl3 +CSSpl6 +CSSH1i3 -CSSpl1 -CSSpl5 -CSSO3i1
+               | -CSSCutOB -CSSCutOC +CSSpl2 +CSSpl3 +CSSpl6 -CSSpl5 -CSSH2i3 -CSSO3i1
+               | +CSSpl3 +CSSpl6 +CSSH2i3 +CSSH3i3 -CSSH1i3 -CSSO3i1
+               | +CSSpl3 +CSSH2i3 -CSSpl5 -CSSH1i3 -CSSH4i3 -CSSO3i1
+               | +CSSpl6 +CSSO1i1 +CSSO3i1 -CSSpl1 -CSSpl5 -YSpl3 -CSSO4i1
+               | +CSSpl6 +YSpl4 +CSSO1i1 -CSSpl1 -CSSpl5 -CSSO4i1
+               | +CSSpl6 +CSSO2i3 +CSSO3i1 -YSpl3 -CSSO1i1 -CSSO4i1 -CSSO6i1
+               | +CSSpl6 +YSpl4 +CSSO2i3 -CSSO1i1 -CSSO4i1 -CSSO6i1
+               | +CSSO2i3 +CSSO3i1 +CSSO5i1 -CSSpl5 -YSpl3 -CSSO1i1
+               | +YSpl4 +CSSO2i3 +CSSO5i1 -CSSpl5 -CSSO1i1 -CSSO4i1
+               | -CSSCutOB -CSSCutOC +CSSpl2 +CSSpl6 +YSpl4 +CSSO3i1 -CSSpl5 -CSSO2i3 -CSSO4i1
+               | -shmsbus1 -shmsbls1 -hmsq1usp -hmsq1lsp -CSSCutOB -CSSCutOC +CSSpl2 +CSSpl6 +CSSO3i1 -CSSpl5
+               -YSpl3 -CSSO2i3
+               | -shmsbus1 -shmsbls1 -hmsq1usp -hmsq1lsp -CSSCutOB -CSSCutOC +CSSpl2 +YSpl3 +YSpl9 -YSpl4 -YSpl8
+               -CSSO2i3
+               | +CSSO3i1 +CSSCuOCi -CSSO4i1 -CSSCutOC -CSSCutOB -CSSCuOBi
+               | -shmsbus1 -shmsbls1 +CSSO2i3 +CSSO3i1 +CSSCuOBi -CSSO4i1 -CSSCutOB
+               | +CSSO3i1 +CSSO6i1 +CSSO1i3 -YSpl3 -CSSO5i1 -CSSO1i2
+               | +YSpl3 +YSpl9 +CSSO3i1 +CSSO1i3 -YSpl4 -YSpl8 -CSSO1i2
+               | +YSpl4 +CSSO6i1 +CSSO1i3 -CSSO4i1 -CSSO5i1 -CSSO1i2
+               | +YSpl4 +CSSO6i1 +CCpl2i2 -CSSO4i1 -CSSO5i1 -CCpl2i1
+               | +YSpl3 +YSpl9 +CCpl2i2 -YSpl4 -YSpl8 -CCpl2i1 -CSSCuOCi -CSSCuOBi
+               | +CSSO3i1 +CSSO6i1 +CCpl2i2 -YSpl3 -CSSO5i1 -CCpl2i1 -CSSCuOCi -CSSCuOBi
+* Void around
+HALLAIR     55 +wall_in -DumpVac -IntCha -BeamIn -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07
+               -opipe08 -opipe09 -opipe10 -AlGaVaBx
+               -opipe11 -opipe12 -opipe13 -opipe14 -opipe15 -opipe16 -opipe17 -opipe18 -opipe19 -opipe20 -opipe21
+               -opipe22 -opipe23 -opipe24
+               -opipe25 -opipe26 -opipe27 -opipe28 -opipe29 -opipe30 -opipe31 -opipe32 -opipe33 -opipe34 -opipe35
+               -opipe36 -opipe37 -opipe38
+               -opipe39 -(+AYSpl2 +CSSpl3 +YSpl7 -CSSpl4 -YSpl1 -YSpl6) -(+CSSHpl2 +CSSHpl4 -CSSpl3 -CSSHpl1
+               -CSSHpl3 -BLStart) -Cam_out
+               -Cam_a3o -Cam_a4o -(+Shield -Sh_p1 -Sh_p2 -Sh_p3 -Sh_p4) -Cam_top1 -Cam_top2 -Cam_top3
+               -( +bender_o -bend_1 -bend_2 -bend_3 -bend_4 -bend_5 -bend_6 -bend_7 -bend_8 ) -minang_o
+               | +( +bender_i +bend_9 ) -bend_7 -minang_o -opipe01 -opipe02 -opipe03 -IntCha -CSSHpl2 -CSSHpl1
+               | +( +bender_i +bend_9 +CSSHpl1 -IntCha -bend_7)
+               | +minang_i -opipe02 -opipe03
+               | +hmsq1usp
+               | +hmsq1lsp
+               | +shmsbls1
+               | +shmsbus1
+               | +YSpl9 +YSpl8 +bend_7 -CSSO2i3 -CSSO3i1 +CSSpl2
+               | +Cam_a3i
+               | +Cam_a4i
+               | +Cam_s2 -Cam_s4 -Cam_a3o
+               | +Cam_s3 -Cam_s5 -Cam_a4o
+               | +CSSpl2 +CSSpl3 +CSSCutOB -CSSCutOC -opipe03
+               | +CSSpl3 +CSSCutOC -opipe03
+               | +CSSpl1 +CSSpl3 +YSpl7 -YSpl1 -YSpl3 -YSpl6
+               | +CSSpl1 +YSpl4 +YSpl7 -CSSpl4 -YSpl1 -YSpl6
+               | +AYSpl2 +YSpl4 +YSpl7 -CSSpl1 -CSSpl4 -CSSpl6
+               | +AYSpl2 +CSSpl5 +YSpl4 -CSSpl1 -CSSpl4 -YSpl6
+               | +AYSpl2 +CSSpl3 +CSSpl5 -CSSpl1 -YSpl3 -YSpl6
+               | +AYSpl2 +CSSpl3 +YSpl7 -CSSpl1 -CSSpl6 -YSpl3
+               | +CSSpl3 +CSSpl6 +AYSpl2 -CSSpl2 -CSSpl5 -YSpl3
+               | +YSpl7 +AYSpl2 +AYSpl5 -CSSpl2 -YSpl4 -YSpl6 -CSSCutOC
+               | +CSSpl6 +YSpl4 +AYSpl2 -CSSpl2 -CSSpl4 -CSSpl5 -CSSCutOC
+               | +YSpl3 +AYSpl2 +AYSpl3 -CSSpl2 -AYSpl4 -AYSpl5 -shmsbus1 -shmsbls1
+               | +wall_tin -wall_min
+* Liquid N2 volume inside
+NITROGEN    25 +CSSO2i3 +CSSO3i1 +CSSO6i1 -CSSO4i1 -CSSO5i1 -CCpl2i2 -CSSCuOCi -CSSCuOBi -(+YSpl3 +CSSO2i3
+               +CSSO6i1 -YSpl4 -YSpl9 -CCpl2i2) -(+YSpl3 +YSpl8 +CSSO2i3 -YSpl4 -CSSO5i1 -CCpl2i2) -hmsq1usp
+               -shmsbus1 -hmsq1lsp -shmsbls1
+               | +CSSO3i1 +CSSO6i1 +CSSO1i2 -YSpl3 -CSSO1i1 -CSSO5i1
+               | +YSpl4 +CSSO6i1 +CSSO1i2 -CSSO1i1 -CSSO4i1 -CSSO5i1
+               | +YSpl3 +YSpl9 +CSSO1i2 -YSpl4 -YSpl5 -YSpl8
+CAMBOX       5 +Cam_out -Cam_in -Cam_s1 -Cam_a1 -Cam_a3o -Cam_a4o
+               | +Cam_s4
+               | +Cam_s5
+               | +Cam_top1
+               | +Cam_top2
+               | +Cam_top3
+CAM_ST       5 +Cam_s1 -Cam_a3o -Cam_a4o -Cam_s2 -Cam_s3
+CAM_PO       5 +Cam_in -Cam_s1 -Cam_p1 -Cam_a3o -Cam_a4o
+               | +Cam_p2
+               | +Cam_p3
+CAM_AL       5 +Cam_a1
+               | +Cam_p1 -Cam_a2 -Cam_a3i -Cam_a4i
+               | +Cam_a3o -Cam_a3i
+               | +Cam_a4o -Cam_a4i
+CAMERA       5 +Cam_l
+               | +Cam_r
+CAMAIR       5 +Cam_a2 -Cam_p2 -Cam_p3 -Cam_l -Cam_r -Cam_d
+CAMD         5 +Cam_d -Cam_r -Cam_l -Cam_p3
+BOX_C        5 +Shield -Sh_p1 -Sh_p2 -Sh_p3 -Sh_p4
+* Liquid Helium for the coils
+HELIUM      25 +YSpl9 +CSSO3i1 +CCpl2i -YSpl8 -CSSO4i1 -CCpl1i -(+CSSH2i3 +CSSH4i3 +CSSO3i1 -CSSH1i3 -CSSH3i3
+               -CSSO4i1)
+               | +CCpl1 +CSSO3i1 +YSpl9 -CSSO4i1 -YSpl8 -CSSO1i3
+               | +CSSO3i1 +YSpl9 +CCpl2i1 -CCpl2 -CSSO4i1 -YSpl8
+               | +CCpl10i +CCpl2i +CSSO3i1 -YSpl3 -YSpl9 -CCpl1i
+               | +CCpl2 +CSSO3i1 +CSSO6i1 -YSpl3 -CCpl1 -CCpl10
+               | +YSpl4 +CCpl10i +CCpl2i -YSpl9 -CCpl1i -CSSO4i1
+               | +YSpl4 +CCpl2 +CSSO6i1 -CCpl1 -CCpl10 -CSSO4i1
+               | +CCpl2 +CCpl10 +CSSO3i1 -CCpl3 -CCpl7 -CCpl2i
+               | +CCpl7 +CSSO3i1 +CCpl2i1 -YSpl3 -CCpl1 -CSSO5i1
+               | +YSpl4 +CCpl2 +CCpl7 -CCpl1 -CSSO4i1 -CSSO5i1
+               | +YSpl4 +YSpl8 +CCpl2i -CCpl7i -CCpl1i -CSSO4i1
+               | +YSpl8 +CCpl2i +CSSO3i1 -YSpl3 -CCpl7i -CCpl1i
+               | +CCpl2 +CCpl5 +CCpl8 -YSpl3 -CCpl7 -CCpl2i
+               | +CCpl5 +CCpl8 +CCpl1i -YSpl3 -CCpl1 -CCpl7
+               | +CCpl10 +CCpl1i +CSSO3i1 -CCpl1 -CCpl3 -CCpl7
+               | +CCpl7i +CCpl2i +CSSO3i1 -CCpl3 -CCpl7 -CCpl1i
+               | +CCpl5 +CCpl7i +CCpl2i -YSpl3 -CCpl7 -CCpl1i
+               | +YSpl4 +CCpl8 +CCpl1i -CCpl1 -CCpl6 -CCpl7
+               | +CCpl4 +CCpl10 +CCpl1i -CCpl1 -CCpl7 -CSSO4i1
+               | +YSpl3 +CCpl8 +CCpl1i -YSpl4 -YSpl8 -CCpl1
+               | +YSpl4 +YSpl8 +CCpl1 -CSSO4i1 -CSSO5i1 -CSSO1i3
+               | +YSpl8 +CCpl1 +CSSO3i1 -YSpl3 -CSSO5i1 -CSSO1i3
+               | +CCpl1 +CSSO3i1 +CSSO6i1 -YSpl3 -YSpl9 -CSSO1i3
+               | +CCpl5 +CCpl10 +CCpl1i -YSpl3 -CCpl1 -CCpl9
+               | +YSpl4 +CCpl10 +CCpl1i -CCpl1 -CCpl6 -CCpl9
+               | +YSpl3 +YSpl9 +CCpl1i -YSpl4 -CCpl1 -CCpl9
+               | +YSpl4 +CCpl1 +CSSO6i1 -YSpl9 -CSSO4i1 -CSSO1i3
+               | +CCpl4 +CCpl10 +CCpl2i1 -CCpl7 -CCpl2i -CSSO4i1
+               | +YSpl4 +CCpl10 +CCpl2i1 -CCpl6 -CCpl9 -CCpl2i
+               | +YSpl4 +CCpl8 +CCpl2i1 -CCpl6 -CCpl7 -CCpl2i
+               | +CCpl5 +CCpl10 +CCpl2i1 -YSpl3 -CCpl9 -CCpl2i
+               | +CCpl5 +CCpl10 +CCpl2i -YSpl3 -CCpl10i -CCpl1i
+               | +CCpl10 +CCpl2i +CSSO3i1 -CCpl3 -CCpl10i -CCpl1i
+               | +YSpl4 +CCpl10 +CCpl2i -CCpl6 -CCpl10i -CCpl1i
+               | +CCpl4 +CCpl10 +CCpl2i -CCpl10i -CCpl1i -CSSO4i1
+               | +YSpl3 +YSpl9 +CCpl2 -YSpl4 -CCpl9 -CCpl2i
+               | +YSpl3 +CCpl2 +CCpl8 -YSpl4 -YSpl8 -CCpl2i
+               | +CCpl4 +CCpl7i +CCpl2i -CCpl7 -CCpl1i -CSSO4i1
+               | +YSpl4 +CCpl7i +CCpl2i -CCpl6 -CCpl7 -CCpl1i
+               | +YSpl8 +CCpl6 +CCpl2i1 -CCpl2 -CCpl4 -CCpl7
+               | +YSpl4 +CCpl7 +CCpl2i1 -CCpl2 -CSSO4i1 -CSSO5i1
+               | +YSpl8 +CSSO3i1 +CCpl2i1 -YSpl3 -CCpl2 -CCpl7
+               | +CSSO3i1 +CSSO6i1 +CCpl2i1 -YSpl3 -YSpl9 -CCpl2
+               | +YSpl4 +CSSO6i1 +CCpl2i1 -YSpl9 -CCpl2 -CSSO4i1
+* Black hole
+VOID         5 +Void -wall_out -( |+wall_tou -wall_min )
+               -DumpVac -BeamIn
+WALL         5 +wall_out -wall_in -BeamIn -Be24i -Be24iDFl -DumpVac
+               | +wall_tou -wall_tin -wall_min
+* Vacuum Dumpline to remove air
+DUMPVAC      5 +DumpVac
+* Vacuum channel from IC to Magnet
+VACCHAN      5 +CSSHpl2 +CSSHpl4 +bender_i -CSSpl3 -CSSHpl1 -CSSHpl3 -BLStart -opipe01
+END
+GEOEND          300.      300.      500.      -50.     -300.      100.DEBUG
+GEOEND            7.       12.        8.                               &
+MATERIAL          1.               0.072                            1.H-LIQUID
+LOW-MAT     D-LIQUID        1.        1.       87.                    HYDROG-1
+MATERIAL         24.                7.18                              CHROMIUM
+LOW-MAT     CHROMIUM       24.       -2.      296.                    CHROMIUM
+MATERIAL         25.                7.21                              MANGANES
+LOW-MAT     CHROMIUM       25.       55.      296.                    MANGANES
+MATERIAL         15.                1.82                              PHOSPHO
+LOW-MAT     CHROMIUM       15.       31.      296.                    PHOSPHO
+MATERIAL         16.                2.07                              SULFUR
+LOW-MAT     CHROMIUM       16.       -2.      296.                    SULFUR
+MATERIAL         30.               7.133                              ZINC
+LOW-MAT     CHROMIUM       30.       -2.      296.                    ZINC
+MATERIAL         41.                8.57                              NIOBIUM
+LOW-MAT     CHROMIUM       41.       93.      296.                    NIOBIUM
+* S1006: Carbon steel AISI type 1006  http://www.azom.com/article.aspx?ArticleID=6537
+MATERIAL                              8.                              S1006
+* S1010: Carbon steel AISI type 1010  http://www.azom.com/article.aspx?ArticleID=6539
+MATERIAL                            7.87                              S1010
+COMPOUND      -.9951      IRON    -.0032  MANGANES    -8.E-4    CARBONS1006
+COMPOUND      -5.E-4    SULFUR    -4.E-4   PHOSPHO                    S1006
+COMPOUND      -.9936      IRON    -.0045  MANGANES    -0.001    CARBONS1010
+COMPOUND      -5.E-4    SULFUR    -4.E-4   PHOSPHO                    S1010
+* SS347: Stainless steel AISI type 347  http://asm.matweb.com/search/GetReference.asp?bassnum=MQ347AQ
+MATERIAL                              8.                              SS347
+COMPOUND    -0.68045      IRON      -.17  CHROMIUM     -0.11    NICKELSS347
+COMPOUND       -0.02  MANGANES     -0.01   SILICON   -4.5E-4   PHOSPHOSS347
+COMPOUND      -3.E-4    SULFUR    -8.E-4    CARBON     -.004   NIOBIUMSS347
+COMPOUND       -.004  TANTALUM                                        SS347
+* SS304: Stainless steel AISI type 304 http://asm.matweb.com/search/GetReference.asp?bassnum=MQ304A
+MATERIAL                              8.                              SS304
+COMPOUND     -.68595      IRON     -0.19  CHROMIUM    -.0925    NICKELSS304
+COMPOUND       -0.02  MANGANES     -0.01   SILICON   -4.5E-4   PHOSPHOSS304
+COMPOUND      -3.E-4    SULFUR    -8.E-4    CARBON                    SS304
+* Al6061-T6: Beam Pipe Aluminum http://asm.matweb.com/search/GetReference.asp?bassnum=MA6061t6
+MATERIAL                             2.7                              AL6061T6
+COMPOUND      -.9668  ALUMINUM    -0.002  CHROMIUM    -.0027    COPPERAL6061T6
+COMPOUND       -.007      IRON     -0.01  MAGNESIU   -0.0015  MANGANESAL6061T6
+COMPOUND       -.006   SILICON   -0.0015  TITANIUM    -.0025      ZINCAL6061T6
+COMPOUND                                                              AL6061T6
+* Steel316LN: Stainless steel AISI316LN
+MATERIAL                             7.8                              SS316LN
+COMPOUND     -.67145      IRON    -0.185  CHROMIUM   -0.1125    NICKELSS316LN
+COMPOUND       -0.02  MANGANES     -0.01   SILICON   -4.5E-4   PHOSPHOSS316LN
+COMPOUND      -3.E-4    SULFUR    -3.E-4    CARBON                    SS316LN
+* Steel316LN: Stainless steel AISI316LN with effective density of 5.4 g/cm^3
+MATERIAL                             5.4                              SS_EF_5
+COMPOUND     -.67145      IRON    -0.185  CHROMIUM   -0.1125    NICKELSS_EF_5
+COMPOUND       -0.02  MANGANES     -0.01   SILICON   -4.5E-4   PHOSPHOSS_EF_5
+COMPOUND      -3.E-4    SULFUR    -3.E-4    CARBON                    SS_EF_5
+* Steel316LN: Stainless steel AISI316LN with effective density of 2.5 g/cm^3
+MATERIAL                             2.5                              SS_EF_3
+MATERIAL         22.                4.54                              TITANIUM
+COMPOUND     -.67145      IRON    -0.185  CHROMIUM   -0.1125    NICKELSS_EF_3
+COMPOUND       -0.02  MANGANES     -0.01   SILICON   -4.5E-4   PHOSPHOSS_EF_3
+COMPOUND      -3.E-4    SULFUR    -3.E-4    CARBON                    SS_EF_3
+* Vacuum 1.e-5 Torr Hydrogen
+MATERIAL          1.          1.1829E-12                            1.HLOWDENS
+LOW-MAT     HLOWDENS        1.       -5.      296.                    HYDROGEN
+MATERIAL          2.              0.1249                              LQHELIUM
+LOW-MAT     LQHELIUM        2.       -2.        4.                    HELIUM
+MATERIAL          1.              0.1690                            2.D-LIQUID
+MATERIAL         19.               0.862                              POTASSIU
+* Concrete portland
+* Concrete has a wide variation in density and composition.
+MATERIAL                             2.3                              PORTLAND
+COMPOUND       -0.01  HYDROGEN    -0.001    CARBON -0.529107    OXYGENPORTLAND
+COMPOUND      -0.016    SODIUM    -0.002  MAGNESIU -0.033872  ALUMINUMPORTLAND
+COMPOUND   -0.337021   SILICON    -0.013  POTASSIU    -0.044   CALCIUMPORTLAND
+COMPOUND      -0.014      IRON                                        PORTLAND
+* Stainless-Steel (typical)
+* Stainless-Steel is produced with Cr content ranging from
+* 4 - 19 Atomic Percent, and with C content from 0 - 4 percent.
+MATERIAL                              8.                              Stainles
+COMPOUND         18.  CHROMIUM       74.      IRON        8.    NICKELStainles
+MAT-PROP                           135.2  PORTLAND
+STERNHEI      3.9464    0.1301    3.0466   0.07515    3.5467          PORTLAND
+LOW-MAT     D-LIQUID        1.        2.       87.                    DEUTERIU
+MATERIAL          5.    10.811      2.37                              BORON
+MATERIAL                            0.95                              BORPOLY
+COMPOUND        -.95  POLYETHY      -.05     BORON                    BORPOLY
+MATERIAL                           3.507                              PIPE1M
+COMPOUND      -.5614  AL6061T6    -.4386  TITANIUM                    PIPE1M
+MATERIAL                          3.1177                              PIPE6M
+COMPOUND       -.773  AL6061T6     -.227  TITANIUM                    PIPE6M
+MATERIAL                          4.4846                              PIPE11M
+COMPOUND     -0.6633  AL6061T6   -0.3367  Stainles                    PIPE11M
+MATERIAL                              8.                              PIPE14M
+COMPOUND      -.8795     SS347   -0.1205  Stainles                    PIPE14M
+MATERIAL                          2.9303                              PIPE17M
+COMPOUND      -.8748  AL6061T6    -.1252  TITANIUM                    PIPE17M
+MATERIAL                          2.9924                              PIPE18M
+COMPOUND      -.8411  AL6061T6    -.1589  TITANIUM                    PIPE18M
+MATERIAL                          2.9895                              PIPE19M
+COMPOUND     -0.8427  AL6061T6   -0.1573  TITANIUM                    PIPE19M
+MATERIAL                          3.9379                              PIPE21M
+COMPOUND      -.7664  AL6061T6   -0.2336  Stainles                    PIPE21M
+MATERIAL                          3.7988                              PIPE24M
+COMPOUND      -.7927  AL6061T6    -.2073  Stainles                    PIPE24M
+MATERIAL                          5.7668                              PIPE27M
+COMPOUND     -0.4214  AL6061T6   -0.5786  Stainles                    PIPE27M
+MATERIAL                              8.                              PIPE39M
+COMPOUND      -.6803     SS304    -.3197  Stainles                    PIPE39M
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+ASSIGNMA    BLCKHOLE   BLKBODY
+ASSIGNMA        LEAD    CAMBOX
+ASSIGNMA     BORPOLY    CAM_PO
+ASSIGNMA    Stainles    CAM_ST
+ASSIGNMA    ALUMINUM    CAM_AL
+ASSIGNMA         AIR    CAMAIR
+ASSIGNMA     SILICON    CAMERA
+ASSIGNMA         AIR      CAMD
+ASSIGNMA        IRON     BOX_C
+ASSIGNMA         AIR   HALLAIR
+ASSIGNMA      VACUUM  BEAMLVAC
+ASSIGNMA       SS304  BEA304SS
+ASSIGNMA    AL6061T6   BEAM_AL
+ASSIGNMA      PIPE1M    BEAM_1
+ASSIGNMA      PIPE6M    BEAM_6
+ASSIGNMA     PIPE11M   BEAM_11
+ASSIGNMA     PIPE14M   BEAM_14
+ASSIGNMA     PIPE17M   BEAM_17
+ASSIGNMA     PIPE18M   BEAM_18
+ASSIGNMA     PIPE19M   BEAM_19
+ASSIGNMA     PIPE21M   BEAM_21
+ASSIGNMA     PIPE24M   BEAM_24
+ASSIGNMA     PIPE27M   BEAM_27
+ASSIGNMA     PIPE39M   BEAM_39
+ASSIGNMA    AL6061T6  ALGAVABX
+ASSIGNMA       SS347  BEA347SS
+ASSIGNMA    AL6061T6   TARGETW
+ASSIGNMA    D-LIQUID    TARGET
+ASSIGNMA      VACUUM  MAGFIELD
+ASSIGNMA       S1010    YOKEST
+ASSIGNMA       S1010   AYOKEST
+ASSIGNMA       S1010   AYOK2ST
+ASSIGNMA      VACUUM    CRYOSH
+ASSIGNMA      COPPER    CRYOCC
+ASSIGNMA       SS304    CRYOIN
+ASSIGNMA      COPPER   CRYOIN1
+ASSIGNMA       SS304   CRYOIN2
+ASSIGNMA       SS304   CRYOOS1
+ASSIGNMA      VACUUM      VOID
+ASSIGNMA    NITROGEN  NITROGEN
+ASSIGNMA    LQHELIUM    HELIUM
+ASSIGNMA      VACUUM   DUMPVAC
+ASSIGNMA      VACUUM   VACCHAN
+ASSIGNMA    PORTLAND      WALL
+ASSIGNMA    TUNGSTEN    SHMS_t
+ASSIGNMA        LEAD    BENDER
+LAM-BIAS                  0.02              PHOTON    PHOTON
+BIASING          0.0              10000.    CAMAIR    CAMERA
+USRBIN           10.  SI1MEVNE      -27.       0.0       0.0     2800.1MeVHall
+USRBIN         -200.     -400.       0.0       20.       40.      280. &
+USRBIN           10.      DOSE      -27.       0.0       0.0     2800.DoseHall
+USRBIN         -200.     -400.       0.0       20.       40.      280. &
+USRBIN           10.  SI1MEVNE      -28.     -100.     -240.     2700.1MeVCam
+USRBIN         -200.     -400.     2500.       25.       40.       50. &
+USRBIN           10.  SI1MEVNE      -28.     -110.     -200.     2700.1MeVCam2
+USRBIN         -190.     -400.     2500.       10.       25.       25. &
+USRBIN           10.  SI1MEVNE      -28.    -140.7    -329.6    2658.51MeVCam1
+USRBIN        -168.8    -394.6    2599.9       10.       10.       10. &
+USRBIN           10.      DOSE      -28.     -100.     -240.     2700.DoseCam
+USRBIN         -200.     -400.     2500.       25.       40.       50. &
+USRBIN           10.      DOSE      -28.     -110.     -200.     2700.DoseCam2
+USRBIN         -190.     -400.     2500.       10.       25.       25. &
+USRBIN           10.      DOSE      -28.    -140.7    -329.6    2658.5DoseCam1
+USRBIN        -168.8    -394.6    2599.9       10.       10.       10. &
+USRBDX            1.   NEUTRON      -29.   HALLAIR    CAMBOX          OutflowN
+USRBDX         0.100               1000.                            1. &
+USRBDX            1.    PHOTON      -29.   HALLAIR    CAMBOX          OutflowP
+USRBDX           0.5                500.                            1. &
+USRBDX           11.    PROTON      -29.   HALLAIR    CAMBOX          Outflowpr
+USRBDX           0.1               1000.                            1. &
+USRBDX            1.  ELECTRON      -29.   HALLAIR    CAMBOX          Outflowe
+USRBDX           0.5                500.                            1. &
+USRBDX            1.   NEUTRON      -29.    CAM_AL    CAMAIR          InflowN
+USRBDX         0.100               1000.                            1. &
+USRBDX            1.    PHOTON      -29.    CAM_AL    CAMAIR          InflowP
+USRBDX           0.5                500.                            1. &
+USRBDX           11.    PROTON      -29.    CAM_AL    CAMAIR          Inflowpr
+USRBDX           0.1               1000.                            1. &
+USRBDX            1.  ELECTRON      -29.    CAM_AL    CAMAIR          Inflowe
+USRBDX           0.5                500.                            1. &
+USRBDX           11.   NEUTRON      -29.    CAMBOX    CAM_PO          InPoly
+USRBDX         0.100               1000.                            1. &
+STOP
