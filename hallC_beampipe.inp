@@ -1042,39 +1042,41 @@ ASSIGNMA    PORTLAND      WALL
 ASSIGNMA    TUNGSTEN    SHMS_t
 ASSIGNMA        LEAD    BENDER
 LAM-BIAS                  0.02              PHOTON    PHOTON
-BIASING          0.0              10000.    CAMAIR    CAMERA
-USRBIN           10.  SI1MEVNE      -27.       0.0       0.0     2800.1MeVHall
-USRBIN         -200.     -400.       0.0       20.       40.      280. &
-USRBIN           10.      DOSE      -27.       0.0       0.0     2800.DoseHall
-USRBIN         -200.     -400.       0.0       20.       40.      280. &
-USRBIN           10.  SI1MEVNE      -28.     -100.     -240.     2700.1MeVCam
-USRBIN         -200.     -400.     2500.       25.       40.       50. &
-USRBIN           10.  SI1MEVNE      -28.     -110.     -200.     2700.1MeVCam2
-USRBIN         -190.     -400.     2500.       10.       25.       25. &
-USRBIN           10.  SI1MEVNE      -28.    -140.7    -329.6    2658.51MeVCam1
-USRBIN        -168.8    -394.6    2599.9       10.       10.       10. &
-USRBIN           10.      DOSE      -28.     -100.     -240.     2700.DoseCam
-USRBIN         -200.     -400.     2500.       25.       40.       50. &
-USRBIN           10.      DOSE      -28.     -110.     -200.     2700.DoseCam2
-USRBIN         -190.     -400.     2500.       10.       25.       25. &
-USRBIN           10.      DOSE      -28.    -140.7    -329.6    2658.5DoseCam1
-USRBIN        -168.8    -394.6    2599.9       10.       10.       10. &
-USRBDX            1.   NEUTRON      -29.   HALLAIR    CAMBOX          OutflowN
-USRBDX         0.100               1000.                            1. &
-USRBDX            1.    PHOTON      -29.   HALLAIR    CAMBOX          OutflowP
-USRBDX           0.5                500.                            1. &
-USRBDX           11.    PROTON      -29.   HALLAIR    CAMBOX          Outflowpr
-USRBDX           0.1               1000.                            1. &
-USRBDX            1.  ELECTRON      -29.   HALLAIR    CAMBOX          Outflowe
-USRBDX           0.5                500.                            1. &
-USRBDX            1.   NEUTRON      -29.    CAM_AL    CAMAIR          InflowN
-USRBDX         0.100               1000.                            1. &
-USRBDX            1.    PHOTON      -29.    CAM_AL    CAMAIR          InflowP
-USRBDX           0.5                500.                            1. &
-USRBDX           11.    PROTON      -29.    CAM_AL    CAMAIR          Inflowpr
-USRBDX           0.1               1000.                            1. &
-USRBDX            1.  ELECTRON      -29.    CAM_AL    CAMAIR          Inflowe
-USRBDX           0.5                500.                            1. &
-USRBDX           11.   NEUTRON      -29.    CAMBOX    CAM_PO          InPoly
-USRBDX         0.100               1000.                            1. &
+* Irradiation profile
+* -------------------
+RADDECAY          1.                           0.0   1008000
+*
+*              7days intensity     4days intensity     7days intensity
+IRRPROFI    604800.0   3.94E14  345600.0       0.0  604800.0   3.94E14
+*              4days intensity     7days intensity     4 days intensity
+IRRPROFI    345600.0       0.0  604800.0   3.94E14  345600.0       0.0
+*             7 days intensity
+IRRPROFI    604800.0   3.94E14
+*
+* Cooling:     1hour  1day  1 week  1month
+DCYTIMES      3600.0   86400.0  604800.0 2592000.0
+*
+* Dose equivalent
+DCYSCORE         1.0                      DoseEq1h  DoseEq1h          USRBIN
+AUXSCORE      USRBIN                      DoseEq1h  DoseEq1h          EWT74
+USRBIN           10.   DOSE-EQ      -64.      100.      100.     170.0DoseEq1h
+USRBIN         -100.     -100.     -30.0     100.0      100.     100.0 &
+DCYSCORE          2.                      DoseEq1d  DoseEq1d          USRBIN
+AUXSCORE      USRBIN                      DoseEq1d  DoseEq1d          EWT74
+USRBIN           10.   DOSE-EQ      -64.      100.      100.     170.0DoseEq1d
+USRBIN         -100.     -100.     -30.0     100.0      100.     100.0 &
+*
+DCYSCORE          3.                      DoseEq1w  DoseEq1w          USRBIN
+AUXSCORE      USRBIN                      DoseEq1w  DoseEq1w          EWT74
+USRBIN           10.   DOSE-EQ      -64.      100.      100.     170.0DoseEq1w
+USRBIN         -100.     -100.     -30.0     100.0      100.     100.0 &
+*
+DCYSCORE          4.                      DoseEq1m  DoseEq1m          USRBIN
+AUXSCORE      USRBIN                      DoseEq1m  DoseEq1m          EWT74
+USRBIN           10.   DOSE-EQ      -64.      100.      100.     170.0DoseEq1m
+USRBIN         -100.     -100.     -30.0     100.0      100.     100.0 &
+USRBIN           10.  SI1MEVNE      -27.      200.      100.     2800.1MeVHall
+USRBIN         -200.     -400.       0.0       40.       50.      280. &
+USRBIN           10.      DOSE      -27.      200.      100.     2800.DoseHall
+USRBIN         -200.     -400.       0.0       40.       50.      280. &
 STOP
