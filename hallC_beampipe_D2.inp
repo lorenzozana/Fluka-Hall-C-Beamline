@@ -892,6 +892,7 @@ VACCHAN      5 +CSSHpl2 +CSSHpl4 +bender_i -CSSpl3 -CSSHpl1 -CSSHpl3 -BLStart -o
 END
 GEOEND          300.      300.      500.      -50.     -300.      100.DEBUG
 GEOEND            7.       12.        8.                               &
+MATERIAL          1.               0.072                            1.H-LIQUID
 LOW-MAT     D-LIQUID        1.        1.       87.                    HYDROG-1
 MATERIAL         24.                7.18                              CHROMIUM
 LOW-MAT     CHROMIUM       24.       -2.      296.                    CHROMIUM
@@ -993,9 +994,6 @@ MATERIAL                          5.7668                              PIPE27M
 COMPOUND     -0.4214  AL6061T6   -0.5786  Stainles                    PIPE27M
 MATERIAL                              8.                              PIPE39M
 COMPOUND      -.6803     SS304    -.3197  Stainles                    PIPE39M
-MATERIAL          1.               .0708                              H-LIQUID
-MAT-PROP                            21.8  H-LIQUID
-STERNHEI      3.2632     .4759    1.9215    .13483    5.6249       0.0H-LIQUID
 * ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
 ASSIGNMA    BLCKHOLE   BLKBODY
 ASSIGNMA        LEAD    CAMBOX
@@ -1050,35 +1048,31 @@ RADDECAY          1.                           0.0   1008000
 *
 *              7days intensity     4days intensity     7days intensity
 IRRPROFI     604800.   3.94E14   345600.       0.0   604800.   3.94E14
-*              4days intensity     7days intensity     4 days intensity
-IRRPROFI     345600.       0.0   604800.   3.94E14   345600.       0.0
-*             7 days intensity
-IRRPROFI     604800.   3.94E14
 *
-* Cooling:     1hour  1day  1 week  1month
-DCYTIMES       3600.    86400.   604800.  2592000.
+* Cooling:     1hour  12hours  1day 1week
+DCYTIMES       3600.    43200.    86400.   604800.
 *
 * Dose equivalent
 DCYSCORE          1.                      DoseEq1h  DoseEq1h          USRBIN
 AUXSCORE      USRBIN                      DoseEq1h  DoseEq1h          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1h
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
-DCYSCORE          2.                      DoseEq1d  DoseEq1d          USRBIN
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1h
+USRBIN         -200.     -400.     -200.       40.       50.      280. &
+DCYSCORE          2.                      DoseE12h  DoseE12h          USRBIN
+AUXSCORE      USRBIN                      DoseE12h  DoseE12h          EWT74
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseE12h
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
+*
+DCYSCORE          3.                      DoseEq1d  DoseEq1d          USRBIN
 AUXSCORE      USRBIN                      DoseEq1d  DoseEq1d          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1d
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1d
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 *
-DCYSCORE          3.                      DoseEq1w  DoseEq1w          USRBIN
+DCYSCORE          4.                      DoseEq1w  DoseEq1w          USRBIN
 AUXSCORE      USRBIN                      DoseEq1w  DoseEq1w          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1w
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
-*
-DCYSCORE          4.                      DoseEq1m  DoseEq1m          USRBIN
-AUXSCORE      USRBIN                      DoseEq1m  DoseEq1m          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1m
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1w
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 USRBIN           10.  SI1MEVNE      -27.      200.      100.     2800.1MeVHall
-USRBIN         -200.     -400.       0.0       40.       50.      280. &
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 USRBIN           10.      DOSE      -27.      200.      100.     2800.DoseHall
-USRBIN         -200.     -400.       0.0       40.       50.      280. &
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 STOP

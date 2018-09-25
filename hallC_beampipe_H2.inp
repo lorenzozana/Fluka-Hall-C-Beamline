@@ -1024,7 +1024,7 @@ ASSIGNMA     PIPE39M   BEAM_39
 ASSIGNMA    AL6061T6  ALGAVABX
 ASSIGNMA       SS347  BEA347SS
 ASSIGNMA    AL6061T6   TARGETW
-ASSIGNMA    D-LIQUID    TARGET
+ASSIGNMA    H-LIQUID    TARGET
 ASSIGNMA      VACUUM  MAGFIELD
 ASSIGNMA       S1010    YOKEST
 ASSIGNMA       S1010   AYOKEST
@@ -1050,35 +1050,31 @@ RADDECAY          1.                           0.0   1008000
 *
 *              7days intensity     4days intensity     7days intensity
 IRRPROFI     604800.   3.94E14   345600.       0.0   604800.   3.94E14
-*              4days intensity     7days intensity     4 days intensity
-IRRPROFI     345600.       0.0   604800.   3.94E14   345600.       0.0
-*             7 days intensity
-IRRPROFI     604800.   3.94E14
 *
-* Cooling:     1hour  1day  1 week  1month
-DCYTIMES       3600.    86400.   604800.  2592000.
+* Cooling:     1hour  12hours  1day 1week
+DCYTIMES       3600.    43200.    86400.   604800.
 *
 * Dose equivalent
 DCYSCORE          1.                      DoseEq1h  DoseEq1h          USRBIN
 AUXSCORE      USRBIN                      DoseEq1h  DoseEq1h          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1h
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
-DCYSCORE          2.                      DoseEq1d  DoseEq1d          USRBIN
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1h
+USRBIN         -200.     -400.     -200.       40.       50.      280. &
+DCYSCORE          2.                      DoseE12h  DoseE12h          USRBIN
+AUXSCORE      USRBIN                      DoseE12h  DoseE12h          EWT74
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseE12h
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
+*
+DCYSCORE          3.                      DoseEq1d  DoseEq1d          USRBIN
 AUXSCORE      USRBIN                      DoseEq1d  DoseEq1d          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1d
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1d
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 *
-DCYSCORE          3.                      DoseEq1w  DoseEq1w          USRBIN
+DCYSCORE          4.                      DoseEq1w  DoseEq1w          USRBIN
 AUXSCORE      USRBIN                      DoseEq1w  DoseEq1w          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1w
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
-*
-DCYSCORE          4.                      DoseEq1m  DoseEq1m          USRBIN
-AUXSCORE      USRBIN                      DoseEq1m  DoseEq1m          EWT74
-USRBIN           10.   DOSE-EQ      -64.      100.      100.      170.DoseEq1m
-USRBIN         -100.     -100.      -30.      100.      100.      100. &
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1w
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 USRBIN           10.  SI1MEVNE      -27.      200.      100.     2800.1MeVHall
-USRBIN         -200.     -400.       0.0       40.       50.      280. &
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 USRBIN           10.      DOSE      -27.      200.      100.     2800.DoseHall
-USRBIN         -200.     -400.       0.0       40.       50.      280. &
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
 STOP
