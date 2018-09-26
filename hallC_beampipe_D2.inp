@@ -1049,8 +1049,14 @@ RADDECAY          1.                           0.0   1008000
 *              7days intensity     4days intensity     7days intensity
 IRRPROFI     604800.   3.94E14   345600.       0.0   604800.   3.94E14
 *
-* Cooling:     1hour  12hours  1day 1week
-DCYTIMES       3600.    43200.    86400.   604800.
+*              7days intensity     4days intensity     7days intensity
+IRRPROFI     604800.   3.94E14   345600.       0.0   604800.   3.94E14
+*
+*              7days intensity     4days intensity     7days intensity
+IRRPROFI     604800.   3.94E14   345600.       0.0   604800.   3.94E14
+*
+* Cooling:     1hour  12hours  1day 1week 1 month
+DCYTIMES       3600.    43200.    86400.   604800.  2592000.
 *
 * Dose equivalent
 DCYSCORE          1.                      DoseEq1h  DoseEq1h          USRBIN
@@ -1070,6 +1076,11 @@ USRBIN         -200.     -400.     -200.       40.       50.      300. &
 DCYSCORE          4.                      DoseEq1w  DoseEq1w          USRBIN
 AUXSCORE      USRBIN                      DoseEq1w  DoseEq1w          EWT74
 USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1w
+USRBIN         -200.     -400.     -200.       40.       50.      300. &
+*
+DCYSCORE          5.                      DoseEq1m  DoseEq1m          USRBIN
+AUXSCORE      USRBIN                      DoseEq1m  DoseEq1m          EWT74
+USRBIN           10.   DOSE-EQ      -64.      200.      100.     2800.DoseEq1m
 USRBIN         -200.     -400.     -200.       40.       50.      300. &
 USRBIN           10.  SI1MEVNE      -27.      200.      100.     2800.1MeVHall
 USRBIN         -200.     -400.     -200.       40.       50.      300. &
