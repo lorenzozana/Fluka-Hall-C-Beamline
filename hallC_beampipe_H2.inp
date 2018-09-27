@@ -1048,6 +1048,10 @@ LAM-BIAS                  0.02              PHOTON    PHOTON
 * -------------------
 RADDECAY          1.                           0.0   1008000
 *
+*
+*
+*
+*
 *              7days intensity     4days intensity     7days intensity
 IRRPROFI     604800.   3.94E14   345600.       0.0   604800.   3.94E14
 *

@@ -20,4 +20,3 @@ n	Target		hours		current(uA)	Energy(GeV)
 19	H2		12		50		8.5
 20	D2		12		50		8.5
 21	Al		2.4		40		8.5
-
