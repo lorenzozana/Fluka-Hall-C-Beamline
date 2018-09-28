@@ -4,6 +4,7 @@ hconv=720
 i=0
 run_per_conf=20
 sub=0
+here_pos=`pwd`
 while read line ; do
     
     if [ $i -gt 0 ] 
@@ -36,7 +37,7 @@ while read line ; do
 	    echo "COMMAND: ~/Hall-C/run_fluka_multiple.sh" >> farmrun_radcon_hall${conf_n}_${j}.jsub
 	    echo "MEMORY: 2000 MB" >> farmrun_radcon_hall${conf_n}_${j}.jsub                        
 	    echo "OS: centos7" >> farmrun_radcon_hall${conf_n}_${j}.jsub                            
-	    echo "INPUT_FILES: ~/Hall-C/hallC_beampipe_"${target}"_"${conf_n}"_"${j}".inp" >> farmrun_radcon_hall${conf_n}_${j}.jsub
+	    echo "INPUT_FILES: "${here_pos}"/hallC_beampipe_"${target}"_"${conf_n}"_"${j}".inp" >> farmrun_radcon_hall${conf_n}_${j}.jsub
 	    if [ ${sub} -eq "1" ]                                                                               
             then
 		echo "Submitting job Conf n." $conf_n " n." $j
