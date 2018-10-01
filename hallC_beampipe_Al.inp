@@ -775,12 +775,12 @@ CRYOOS1     55 +CSSpl2 +CSSpl6 +CSSH1i3 +CSSH2i3 +CSSO4i1 -CSSpl1 -CSSpl4 -CSSpl
                | +CSSO3i1 +CSSO6i1 +CCpl2i2 -YSpl3 -CSSO5i1 -CCpl2i1 -CSSCuOCi -CSSCuOBi
 * Void around
 HALLAIR     55 +wall_in +hair_cut -IntCha -BeamIn -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07 -
-               (+AYSpl2 +CSSpl3 +YSpl7 -CSSpl4 -YSpl1 -YSpl6) -(+CSSHpl2 +CSSHpl4 -CSSpl3 -CSSHpl1 -CSSHpl3 
+               (+AYSpl2 +CSSpl3 +YSpl7 -CSSpl4 -YSpl1 -YSpl6) -(+CSSHpl2 +CSSHpl4 -CSSpl3 -CSSHpl1 -CSSHpl3
                -BLStart) -(+bender_o -bend_1 -bend_2 -bend_3 -bend_4 -bend_5 -bend_6 -bend_7 -bend_8) -minang_o
-               | +wall_in -hair_cut -opipe08 -opipe09 -opipe10 -AlGaVaBx -DumpVac -opipe11 -opipe12 -opipe13 
-               -opipe14 -opipe15 -opipe16 -opipe17 -opipe18 -opipe19 -opipe20 -opipe21 -opipe22 -opipe23 -opipe24 
-               -opipe25 -opipe26 -opipe27 -opipe28 -opipe29 -opipe30 -opipe31 -opipe32 -opipe33 -opipe34 -opipe35 
-               -opipe36 -opipe37 -opipe38 -opipe39 -Cam_out -Cam_a3o -Cam_a4o -(+Shield -Sh_p1 -Sh_p2 -Sh_p3 
+               | +wall_in -hair_cut -opipe08 -opipe09 -opipe10 -AlGaVaBx -DumpVac -opipe11 -opipe12 -opipe13
+               -opipe14 -opipe15 -opipe16 -opipe17 -opipe18 -opipe19 -opipe20 -opipe21 -opipe22 -opipe23 -opipe24
+               -opipe25 -opipe26 -opipe27 -opipe28 -opipe29 -opipe30 -opipe31 -opipe32 -opipe33 -opipe34 -opipe35
+               -opipe36 -opipe37 -opipe38 -opipe39 -Cam_out -Cam_a3o -Cam_a4o -(+Shield -Sh_p1 -Sh_p2 -Sh_p3
                -Sh_p4) -Cam_top1 -Cam_top2 -Cam_top3
                | +(+bender_i +bend_9) -bend_7 -minang_o -opipe01 -opipe02 -opipe03 -IntCha -CSSHpl2 -CSSHpl1
                | +(+bender_i +bend_9 +CSSHpl1 -IntCha -bend_7)
@@ -891,7 +891,7 @@ VACCHAN      5 +CSSHpl2 +CSSHpl4 +bender_i -bend_7 -CSSHpl1 -CSSHpl3 -BLStart -o
 END
 GEOEND          300.      300.      500.      -50.     -300.      100.DEBUG
 GEOEND            7.       12.        8.                               &
-LOW-MAT     D-LIQUID        1.        1.       87.                    HYDROG-1
+LOW-MAT     H-LIQUID        1.        1.       87.                    HYDROG-1
 MATERIAL         24.                7.18                              CHROMIUM
 LOW-MAT     CHROMIUM       24.       -2.      296.                    CHROMIUM
 MATERIAL         25.                7.21                              MANGANES
