@@ -523,6 +523,7 @@ RCC ipipe06    0.0 0.0 417.449 0.0 0.0 1.7272 3.1369
 RCC opipe07    0.0 0.0 419.1762 0.0 0.0 3.4925 6.35
 RCC ipipe07    0.0 0.0 419.1762 0.0 0.0 3.4925 4.7625
 RCC opipe08    0.0 0.0 422.6687 0.0 0.0 381.9525 6.35
+XYP hair_cut   422.6687
 RCC ipipe08    0.0 0.0 422.6687 0.0 0.0 381.9525 5.715
 RCC opipe09    0.0 0.0 804.6212 0.0 0.0 2.2225 9.017
 RCC ipipe09    0.0 0.0 804.6212 0.0 0.0 2.2225 6.477
@@ -671,7 +672,7 @@ BEAMLVAC     5 +ipipe01
                | +AlGaVaBV
                | +BeamIn
                | +IntCha -TargetW -( +bender_o -bend_1 -bend_2 -bend_3 -bend_4 -bend_5 )
-               | +( +bender_i +IntCha +bend_9 -bend_2 )
+               | +bender_i +IntCha +bend_9 -bend_2
 * Aluminum Gate Valve Box
 ALGAVABX     5 +AlGaVaBx -AlGaVaBV -AlGaVaPV
 * SHMS Min Angle
@@ -697,7 +698,7 @@ AYOKEST      5 +YSpl3 +YSpl7 +AYSpl1 -YSpl1 -YSpl2 -YSpl4 -YSpl5 -YSpl9
 AYOK2ST      5 +YSpl3 +YSpl7 +AYSpl2 -AYSpl1 -AYSpl3 -AYSpl5
                | +YSpl3 +AYSpl2 +AYSpl4 -YSpl6 -AYSpl1 -AYSpl5
 * Vacuum Hole in the Cryostat
-CRYOSH       5 +CSSpl3 +CSSHpl2 +CSSHpl4 -CSSpl4 -CSSHpl1 -CSSHpl3
+CRYOSH       5 +bend_7 +CSSHpl2 +CSSHpl4 -CSSpl4 -CSSHpl1 -CSSHpl3
 * Copper Coil in the Cryostat
 CRYOCC      55 +CCpl3 +CCpl5 +CCpl9 +CCpl1i +CCpl2i -CCpl1 -CCpl4 -CCpl6 -CCpl8
                | +CCpl2 +CCpl3 +CCpl5 +CCpl9 -CCpl4 -CCpl6 -CCpl8 -CCpl1i -CCpl2i
@@ -773,24 +774,22 @@ CRYOOS1     55 +CSSpl2 +CSSpl6 +CSSH1i3 +CSSH2i3 +CSSO4i1 -CSSpl1 -CSSpl4 -CSSpl
                | +YSpl3 +YSpl9 +CCpl2i2 -YSpl4 -YSpl8 -CCpl2i1 -CSSCuOCi -CSSCuOBi
                | +CSSO3i1 +CSSO6i1 +CCpl2i2 -YSpl3 -CSSO5i1 -CCpl2i1 -CSSCuOCi -CSSCuOBi
 * Void around
-HALLAIR     55 +wall_in -DumpVac -IntCha -BeamIn -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07
-               -opipe08 -opipe09 -opipe10 -AlGaVaBx
-               -opipe11 -opipe12 -opipe13 -opipe14 -opipe15 -opipe16 -opipe17 -opipe18 -opipe19 -opipe20 -opipe21
-               -opipe22 -opipe23 -opipe24
-               -opipe25 -opipe26 -opipe27 -opipe28 -opipe29 -opipe30 -opipe31 -opipe32 -opipe33 -opipe34 -opipe35
-               -opipe36 -opipe37 -opipe38
-               -opipe39 -(+AYSpl2 +CSSpl3 +YSpl7 -CSSpl4 -YSpl1 -YSpl6) -(+CSSHpl2 +CSSHpl4 -CSSpl3 -CSSHpl1
-               -CSSHpl3 -BLStart) -Cam_out
-               -Cam_a3o -Cam_a4o -(+Shield -Sh_p1 -Sh_p2 -Sh_p3 -Sh_p4) -Cam_top1 -Cam_top2 -Cam_top3
-               -( +bender_o -bend_1 -bend_2 -bend_3 -bend_4 -bend_5 -bend_6 -bend_7 -bend_8 ) -minang_o
-               | +( +bender_i +bend_9 ) -bend_7 -minang_o -opipe01 -opipe02 -opipe03 -IntCha -CSSHpl2 -CSSHpl1
-               | +( +bender_i +bend_9 +CSSHpl1 -IntCha -bend_7)
+HALLAIR     55 +wall_in +hair_cut -IntCha -BeamIn -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07 -
+               (+AYSpl2 +CSSpl3 +YSpl7 -CSSpl4 -YSpl1 -YSpl6) -(+CSSHpl2 +CSSHpl4 -CSSpl3 -CSSHpl1 -CSSHpl3 
+               -BLStart) -(+bender_o -bend_1 -bend_2 -bend_3 -bend_4 -bend_5 -bend_6 -bend_7 -bend_8) -minang_o
+               | +wall_in -hair_cut -opipe08 -opipe09 -opipe10 -AlGaVaBx -DumpVac -opipe11 -opipe12 -opipe13 
+               -opipe14 -opipe15 -opipe16 -opipe17 -opipe18 -opipe19 -opipe20 -opipe21 -opipe22 -opipe23 -opipe24 
+               -opipe25 -opipe26 -opipe27 -opipe28 -opipe29 -opipe30 -opipe31 -opipe32 -opipe33 -opipe34 -opipe35 
+               -opipe36 -opipe37 -opipe38 -opipe39 -Cam_out -Cam_a3o -Cam_a4o -(+Shield -Sh_p1 -Sh_p2 -Sh_p3 
+               -Sh_p4) -Cam_top1 -Cam_top2 -Cam_top3
+               | +(+bender_i +bend_9) -bend_7 -minang_o -opipe01 -opipe02 -opipe03 -IntCha -CSSHpl2 -CSSHpl1
+               | +(+bender_i +bend_9 +CSSHpl1 -IntCha -bend_7)
                | +minang_i -opipe02 -opipe03
                | +hmsq1usp
                | +hmsq1lsp
                | +shmsbls1
                | +shmsbus1
-               | +YSpl9 +YSpl8 +bend_7 -CSSO2i3 -CSSO3i1 +CSSpl2
+               | +YSpl9 +YSpl8 +bend_7 -CSSO2i3 -CSSO3i1 +CSSpl2 -CSSpl3
                | +Cam_a3i
                | +Cam_a4i
                | +Cam_s2 -Cam_s4 -Cam_a3o
@@ -888,7 +887,7 @@ WALL         5 +wall_out -wall_in -BeamIn -Be24i -Be24iDFl -DumpVac
 * Vacuum Dumpline to remove air
 DUMPVAC      5 +DumpVac
 * Vacuum channel from IC to Magnet
-VACCHAN      5 +CSSHpl2 +CSSHpl4 +bender_i -CSSpl3 -CSSHpl1 -CSSHpl3 -BLStart -opipe01
+VACCHAN      5 +CSSHpl2 +CSSHpl4 +bender_i -bend_7 -CSSHpl1 -CSSHpl3 -BLStart -opipe01
 END
 GEOEND          300.      300.      500.      -50.     -300.      100.DEBUG
 GEOEND            7.       12.        8.                               &
@@ -995,8 +994,8 @@ MATERIAL                              8.                              PIPE39M
 COMPOUND      -.6803     SS304    -.3197  Stainles                    PIPE39M
 MATERIAL          1.               .0708                              H-LIQUID
 MATERIAL         13.              2.6989                              ALUMINUM
-MAT-PROP                           166.0  ALUMINUM
-MAT-PROP        27.0                      ALUMINUM                    DPA-ENER
+MAT-PROP                            166.  ALUMINUM
+MAT-PROP         27.                      ALUMINUM                    DPA-ENER
 STERNHEI      4.2395     .1708    3.0127    .08024    3.6345      0.12ALUMINUM
 MAT-PROP                            21.8  H-LIQUID
 STERNHEI      3.2632     .4759    1.9215    .13483    5.6249       0.0H-LIQUID
@@ -1051,6 +1050,7 @@ LAM-BIAS                  0.02              PHOTON    PHOTON
 * Irradiation profile
 * -------------------
 RADDECAY          1.                           0.0   1008000
+*
 *
 *              7days intensity     4days intensity     7days intensity
 IRRPROFI     604800.   3.94E14   345600.       0.0   604800.   3.94E14
