@@ -23,11 +23,12 @@ while read line ; do
     energy=`echo $line | awk '{printf("%s \n",$5)}'`
     energy=`echo $energy |  sed 's/ /*/g'`
     energy=`awk -vp=$energy 'BEGIN{printf "%4s",p}'`
-    shift1=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 3600 }'`
-    shift2=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 43200 }'`
-    shift3=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 86400 }'`
-    shift4=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 604800 }'`
-    shift5=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 2592000 }'`
+    #added 1 second in order to avoid overlapping on the last one in time
+    shift1=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 3601 }'`
+    shift2=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 43201 }'`
+    shift3=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 86401 }'`
+    shift4=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 604801 }'`
+    shift5=`awk -vp=$shift 'BEGIN{printf "%7d" ,p + 2592001 }'`
     echo "Conf n.="$conf_n "target="$target " seconds="$seconds "current="$current " energy="$energy " shift="$shift
     perl -pe "s/.*/IRRPROFI     $seconds.  $current   $seconds.       0.0   $seconds.  $current/ if $. == 1056 ; s/.*/IRRPROFI     $seconds.  $current   $seconds.       0.0   $seconds.  $current/ if $. == 1062 ; s/.*/IRRPROFI     $seconds.       0.0   $seconds.  $current   $seconds.       0.0/ if $. == 1059 ; s/.*/BEAM           -$energy             .142857      0.01      0.01          ELECTRON/ if $. == 6 ; s/.*/DCYTIMES    $shift1.  $shift2.  $shift3.  $shift4.  $shift5./ if $. == 1066" < hallC_beampipe_${target}.inp >  hallC_beampipe_${target}_${conf_n}.inp
     j=0
