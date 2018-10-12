@@ -33,7 +33,9 @@ echo "Minimum files for configuration ="$min_files
 
 
 
-#create accumulated list of files with min_files for each target and create the output
+# create accumulated list of files with min_files for each target and create the output
+# The Dose-eq is expressed as accumulated dose per single target in pSV. The accumulated dose will be the average dose for all the configurations with the same number input files per configuration: Since the activation will be the sum of each configuration, the final answer will be the average multiplied by the number of configuraions.
+# the dose in RAD and the 1MeV equivalent is expressed in amount/electron. One will need correct a sample of events with the correct exposure so that the number of files in the sample is proportional to the (hours x current) for each configuration  
 i=0
 while read line ; do    
     if [ $i -gt 0 ]
