@@ -37,6 +37,10 @@ echo "Minimum files for configuration ="$min_files
 # The Dose-eq is expressed as accumulated dose per single target in pSV. The accumulated dose will be the average dose for all the configurations with the same number input files per configuration: Since the activation will be the sum of each configuration, the final answer will be the average multiplied by the number of configuraions.
 # the dose in RAD and the 1MeV equivalent is expressed in amount/electron. One will need correct a sample of events with the correct exposure so that the number of files in the sample is proportional to the (hours x current) for each configuration  
 i=0
+rm accumulated_dose_27.txt accumulated_activation_64.txt
+touch accumulated_dose_27.txt
+touch accumulated_activation_64.txt
+intcurrent=0
 while read line ; do    
     if [ $i -gt 0 ]
     then
@@ -44,14 +48,30 @@ while read line ; do
 	conf_n=`echo $conf_n |  sed 's/ /*/g'`
 	target=`echo $line | awk '{printf("%s \n",$2)}'`
 	target=`echo $target |  sed 's/ /*/g'`
-	if [ $i -eq 1 ]
+	hours=`echo $line | awk '{printf("%s \n",$3)}'`
+	hours=`echo $hours |  sed 's/ /*/g'`
+	current=`echo $line | awk '{printf("%s \n",$4)}'`
+	current=`echo $current |  sed 's/ /*/g'`
+	intcurrent=`awk -vp=$current -vq=$hours -vn=$intcurrent -vm="2.25E16" 'BEGIN{printf "%.5E" ,p * q * m + n}'`
+	# Approximate the integrated current x hours without the decimals
+	current=`awk -vp=$current -vq=$hours 'BEGIN{ v=p*q/100; print int(v+0.5) }'`
+	echo "Conf n.="$conf_n "target="$target " hours="$hours "Integrated current="$current
+	j=0
+	files_n=`ls -1 *${target}_${conf_n}_*_fort.27 | wc -l `
+	if [ "$current" -le "$files_n" ]
 	then
-	    ls -1 *${target}_${conf_n}_*_fort.27 | sed -n 1,${min_files}p > accumulated_dose_27.txt
-	    ls -1 *${target}_${conf_n}_*_fort.64 | sed -n 1,${min_files}p > accumulated_activation_64.txt
-	else 
-	    ls -1 *${target}_${conf_n}_*_fort.27 | sed -n 1,${min_files}p >> accumulated_dose_27.txt
-	    ls -1 *${target}_${conf_n}_*_fort.64 | sed -n 1,${min_files}p >> accumulated_activation_64.txt
+	    ls -1 *${target}_${conf_n}_*_fort.27 | sed -n 1,${current}p >> accumulated_dose_27.txt 
+	else
+	    tot_run=`awk -vp=$current -vq=$files_n 'BEGIN{ v=p/q; print int(v) }'`
+	    while [ "$j" -lt "$tot_run" ]
+	    do
+		ls -1 *${target}_${conf_n}_*_fort.27 >> accumulated_dose_27.txt
+		((j=j+1))
+	    done
+	    left_run=`awk -vp=$current -vq=$files_n 'BEGIN{ v=p-q*int(p/q) ; print int(v) }'`
+	    ls -1 *${target}_${conf_n}_*_fort.27 | sed -n 1,${left_run}p >> accumulated_dose_27.txt
 	fi
+	ls -1 *${target}_${conf_n}_*_fort.64 | sed -n 1,${min_files}p >> accumulated_activation_64.txt
     fi
     ((i=i+1)) 
 done < $file 
@@ -61,3 +81,4 @@ echo "accumulated_dose_27.bnn" >> accumulated_dose_27.txt
 echo "accumulated_activation_64.bnn" >> accumulated_activation_64.txt
 nice ${FLUPRO}/flutil/usbsuw <  accumulated_dose_27.txt > accumulated_dose_27.log
 nice ${FLUPRO}/flutil/usbsuw <  accumulated_activation_64.txt > accumulated_activation_64.log
+echo "Total Integrated current (number of electrons)=" $intcurrent
