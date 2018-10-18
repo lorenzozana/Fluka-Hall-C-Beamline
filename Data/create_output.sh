@@ -55,6 +55,7 @@ while read line ; do
 	intcurrent=`awk -vp=$current -vq=$hours -vn=$intcurrent -vm="2.25E16" 'BEGIN{printf "%.5E" ,p * q * m + n}'`
 	# Approximate the integrated current x hours without the decimals
 	current=`awk -vp=$current -vq=$hours 'BEGIN{ v=p*q/100; print int(v+0.5) }'`
+#	current=`awk -vp=$current -vq=$hours 'BEGIN{ v=p*q/10; print int(v+0.5) }'`
 	echo "Conf n.="$conf_n "target="$target " hours="$hours "Integrated current="$current
 	j=0
 	files_n=`ls -1 *${target}_${conf_n}_*_fort.27 | wc -l `
@@ -81,4 +82,6 @@ echo "accumulated_dose_27.bnn" >> accumulated_dose_27.txt
 echo "accumulated_activation_64.bnn" >> accumulated_activation_64.txt
 nice ${FLUPRO}/flutil/usbsuw <  accumulated_dose_27.txt > accumulated_dose_27.log
 nice ${FLUPRO}/flutil/usbsuw <  accumulated_activation_64.txt > accumulated_activation_64.log
-echo "Total Integrated current (number of electrons)=" $intcurrent
+echo "Total Integrated current (number of electrons) (number for 1MeVeq neutron on Silicon)=" $intcurrent
+dose_fact=`awk -vp=$intcurrent -vq="1.602176462E-5" 'BEGIN{printf "%.5E" ,p * q}'`
+echo "Total Integrated factor (for Rad conversion)=" $dose_fact
