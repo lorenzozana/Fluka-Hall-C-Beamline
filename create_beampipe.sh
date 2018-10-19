@@ -65,5 +65,3 @@ while read line ; do
     ((i=i+1)) 
 done < $file 
 
-
-#    perl -pe "s/.*/\/moller\/ana\/rootfilename sc_attach_flux_${i} / if $. == 1" < run_prex.mac > run_prex_${i}.mac
