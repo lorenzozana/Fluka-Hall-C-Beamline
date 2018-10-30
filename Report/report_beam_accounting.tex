@@ -1,0 +1,110 @@
+\documentclass[12pt, letterpaper, twoside, titlepage]{article}
+% font size could be 10pt (default), 11pt or 12 pt
+% paper size coulde be letterpaper (default), legalpaper, executivepaper,
+% a4paper, a5paper or b5paper
+% side coulde be oneside (default) or twoside 
+% columns coulde be onecolumn (default) or twocolumn
+% graphics coulde be final (default) or draft 
+%
+% titlepage coulde be notitlepage (default) or titlepage which 
+% makes an extra page for title 
+% 
+% paper alignment coulde be portrait (default) or landscape 
+%
+% equations coulde be 
+%   default number of the equation on the rigth and equation centered 
+%   leqno number on the left and equation centered 
+%   fleqn number on the rigth and  equation on the left side
+%
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[left=3cm, right=3cm, top=3cm]{geometry}
+\usepackage{mathpazo,amsmath}
+\def\inch#1{#1''}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{JLAB-TN-18-040}
+\lhead{\today}
+\cfoot{\thepage}
+	
+\title{\textit{JLAB-TN-18-040} \\
+  Beam accounting in Hall-C}
+\author{Lorenzo Zana  \\
+	Jefferson Lab  \\
+	\and 
+	Rad. Control Department \\
+	Jefferson Lab \\
+	}
+
+\date{\today} 
+% \date{\today} date coulde be today 
+% \date{25.12.00} or be a certain date
+% \date{ } or there is no date 
+\begin{document}
+% Hint: \title{what ever}, \author{who care} and \date{when ever} could stand 
+% before or after the \begin{document} command 
+% BUT the \maketitle command MUST come AFTER the \begin{document} command! 
+\maketitle
+
+
+%\tableofcontents % create a table of contens 
+
+
+
+\section{Introduction}
+During an experiment in Hall-C, in order to account for beam exposure and activation in the Hall, with normal configuration, one will need to take into account the radiation in the enclosure of the beamline. Multiple targets will be run multiple times with different intensities. Radiation budget for this experiment will be a cumulative answer from all this configuration. Fluka has the key feature to easily obtain statistics for these low process without too high computing power and can calculate activation at different time.
+\section{Getting info from the CAD design}
+Different experiments will have a different beamline setup. It is important to transfer just the important part of the setup for radiation simulation in FLUKA, since too much detail will be difficult to debug and will also consistently slow-down the simulation. In order to achieve this, simplified information regarding the beam enclosure where filtered from the design and transformed in information usefull for the FLUKA model. Different materials for the flange in the beamline (bolts, nuts, washers) had their weight determined and a local material was created for each flange in order to address local activation. The other relevant information was then transfered to a text file with:
+\begin{itemize} 
+\item Start Z(cm)
+\item Stop Z(cm)
+\item Outher Radius (cm)
+\item Thickness (cm)
+\item Inner Radius(cm)
+\item Weight (lbs)
+\item Length (cm)
+\item Material
+\end{itemize}
+A bash script will help create the full geometry of the beamline, with each region divided by each different materials, all with the correct spacing needed by fluka. This will help to speed up the implementation of a new beampipe design into the Hall.
+
+\section{Running the simulation in the farm system at Jlab}
+The different target cells where created in different input files: These will be used for creating the multiple different outputs. The info for the run period were put in a input file containing:
+\begin{itemize}
+\item Target
+\item hours
+\item current($\mu$A)
+\item Energy(GeV)
+\end{itemize}
+These info will be convoluted in the different input files in order to create the different simulation needed. In order to run the simulations and well use the structure of the Jlab farm computing system, I will need to run the same configuration multiple times. Each configuration file will have similar structure, with the info to be modified at the same line in the file.
+\begin{itemize}
+\item The current is given in $\mu$A and will need to be trasfered in number of particle per seconds for the activation with this configuration
+\item The energy will be replaced with the correct one for each configuration
+\item The hours of running with each configuration will be transformed in seconds and divided in 5 parts. In order to assume a more accurate accelerator efficiency during run time, each of the 5 parts of beam exposure will be followed by the same time of no beam. This will give a 55\% efficiency.
+\item The integrated beam exposure  will be recorded for each time in order to have a final number.
+\item The full activation of the  experiment is a convolution of the different configurations at a recorded time after all the different targets were exposed. The time of activation from beam exposure at the end of the experiment will depend of the time that is left in the experiment. For this reason, in order to get the correct time at each step, one start the file creation from the last target, and build the correct time delay for each configuration.
+\item The activation was then calculated at different time from beam exposure (1hour, 12hours, 1day, 1week, 1month) for each target exposure and for the full experiment exposure, using different times for each targets, decided from the alghoritm explained in the previous point
+\item For each configuratio multiple simulation were createdL The random seed was created and modified for each simulation in order to assure that each simulation was statistically indipendent.
+\end{itemize}
+
+\section{Analyzing the results}
+In order to analyze the results, we will need to take into account how these results are recorded in Fluka. The activation is recorded in pSv/second, rather than the dose and the 1MeV neutron equivalent flux on Silicon it is recorded per incident beam particle.
+
+
+\begin{thebibliography}{9}
+\bibitem[Code]{code} \emph{Fluka Hall-C Beam Accounting code:} \href{https://github.com/lorenzozana/Fluka-Hall-C-Beamline}{https://github.com/lorenzozana/Fluka-Hall-C-Beamline},
+Lorenzo Zana
+\bibitem[Fluka1]{fluka1} \emph{The FLUKA Code: Developments and Challenges for High Energy and Medical Applications:}
+T.T. Böhlen, F. Cerutti, M.P.W. Chin, A. Fassò, A. Ferrari, P.G. Ortega, A. Mairani, P.R. Sala, G. Smirnov and V. Vlachoudis,
+\textbf{Nuclear Data Sheets 120, 211-214 (2014)} 
+\bibitem[Fluka2]{fluka2} \emph{FLUKA: a multi-particle transport code:}
+A. Ferrari, P.R. Sala, A. Fasso`, and J. Ranft,
+\textbf{CERN-2005-10 (2005), INFN/TC\_05/11, SLAC-R-773}
+\bibitem[JLAB-TN-18-029]{18-029} \emph{Thick Target Radiation Source Term at CEBAF:}
+G. Kharashvili, P. Degtiarenko, V. Vylet,
+\href{https://jlabdoc.jlab.org/docushare/dsweb/Get/Document-162525/18-029.pdf}{\textbf{JLAB-TN-18-029 (2018)}}
+\end{thebibliography}
+
+\end{document}
