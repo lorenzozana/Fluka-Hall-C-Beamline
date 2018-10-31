@@ -20,6 +20,34 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[left=3cm, right=3cm, top=3cm]{geometry}
+\usepackage{listings}
+\usepackage{color}                                                                                                                                                                                                                                                                                              
+\definecolor{codegreen}{rgb}{0,0.6,0}                                                                                                                                                                                                                                                                           
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}                                                                                                                                                                                                                                                                        
+\definecolor{codepurple}{rgb}{0.58,0,0.82}                                                                                                                                                                                                                                                                      
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                
+\lstdefinestyle{mystyle}{                                                                                                                                                                                                                                                                                       
+    backgroundcolor=\color{backcolour},                                                                                                                                                                                                                                                                         
+    commentstyle=\color{codegreen},                                                                                                                                                                                                                                                                             
+    keywordstyle=\color{magenta},                                                                                                                                                                                                                                                                               
+    numberstyle=\tiny\color{codegray},                                                                                                                                                                                                                                                                          
+    stringstyle=\color{codepurple},                                                                                                                                                                                                                                                                             
+    basicstyle=\footnotesize,                                                                                                                                                                                                                                                                                   
+    breakatwhitespace=false,                                                                                                                                                                                                                                                                                    
+    breaklines=true,                                                                                                                                                                                                                                                                                            
+    captionpos=b,                                                                                                                                                                                                                                                                                               
+    keepspaces=true,                                                                                                                                                                                                                                                                                            
+    numbers=left,                                                                                                                                                                                                                                                                                               
+    numbersep=5pt,                                                                                                                                                                                                                                                                                              
+    showspaces=false,                                                                                                                                                                                                                                                                                           
+    showstringspaces=false,                                                                                                                                                                                                                                                                                     
+    showtabs=false,                                                                                                                                                                                                                                                                                             
+    tabsize=2                                                                                                                                                                                                                                                                                                   
+}                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                
+\lstset{style=mystyle} 
+
 \usepackage{mathpazo,amsmath}
 \def\inch#1{#1''}
 \usepackage{fancyhdr}
@@ -68,7 +96,60 @@ Different experiments will have a different beamline setup. It is important to t
 \item Length (cm)
 \item Material
 \end{itemize}
+\begin{scriptsize}
+\begin{tabular}{ | l | l | l | l | l | l | l | l | }
+  \hline\noalign{\smallskip}
+  Start Z(cm) &	Stop Z(cm)&	Outher R(cm) &	Thickness(cm) &	Inner R(cm) &	Weight(lbs) &	Length(cm) &	Material \\
+\hline
+  69.85 & 71.12 &	3.50012	&	1.651 &  1.84912 &		0.48768	&  1.27	& 6061-T6Alum \\
+  71.12 & 78.8924 & 2.14884 & 0.29972 & 		1.84912 &   0.4953 & 7.7724 & 6061-T6Alum \\
+78.8924 & 	258.5212 & 2.54 & 		0.47752 &   2.06248 & 9.53008 & 179.6288 & 6061-T6Alum \\
+258.5212 & 260.096 & 	3.65252 & 		1.5875 &   2.06502 & 0.65278 & 1.5748 & 	6061-T6Alum \\
+260.096 & 	417.449 & 	3.65252 & 		0.51816 &   3.13436 & 25.146 & 157.353 & 	6061-T6Alum \\
+417.449 & 	419.1762 & 7.06628 & 		3.92938 &   3.1369 & 3.11404 & 1.7272 & 	6061-T6Alum \\
+419.1762 & 422.6687 & 6.35 & 		1.5875 &   4.7625 & 4.01066 & 3.4925 & 	6061-T6Alum \\
+422.6687 & 804.6212 & 6.35 & 		0.635 &   5.715 & 	139.573 & 381.9525 & 6061-T6Alum \\
+804.6212 & 806.8437 & 9.017 & 		2.54 &   6.477 & 	4.064 & 2.2225 & 	6061-T6Alum \\
+806.8437 & 868.68 & 	8.89 & 		0.635 &   8.255 & 	32.8422 & 61.8363	 & 6061-T6Alum \\
+868.68 & 	870.966 & 	13.6525 & 		5.3975 &   8.255 & 	11.3284 & 2.286 & 	6061-T6Alum \\
+870.9787 & 873.5187 & 13.6525 & 		3.7084 &   9.9441 & 29.1338 & 2.54 & 	347SS \\
+873.5187 & 886.4219 & 10.16 & 		0.2159 &   9.9441 & 7.747 & 12.9032 & 	347SS \\
+886.4219 & 888.9619 & 13.6525 & 		3.7084 &   9.9441 & 29.1338 & 2.54 & 	347SS \\
+888.9619 & 891.8194 & 13.6525 & 		2.8575 &   10.795 & 8.88238 & 2.8575 & 	6061-T6Alum \\
+891.8194 & 1087.3994 & 13.6525 & 		0.9525 &   12.7 & 	229.7811 & 	195.58 & 6061-T6Alum \\
+1087.3994 & 1090.2569 & 22.86 & 		10.16 &   12.7 & 	43.59656 & 	2.8575 & 6061-T6Alum \\
+1090.2569 & 1094.0669 & 29.845 & 		14.605 &   15.24 & 	112.93348 & 	3.81 & 6061-T6Alum \\
+1110.5261 & 1114.3361 & 29.845 & 		14.68374 &  15.16126 & 114.3 & 		3.81 & 6061-T6Alum \\
+1114.3361 & 1265.4915 & 16.1925 & 		1.03124 &   15.16126 & 232.16108 & 	151.1554 & 6061-T6Alum \\
+1265.4915 & 1268.349 & 22.86 & 		7.69874 &   15.16126 & 38.49878 & 	2.8575 & 	6061-T6Alum \\
+1268.349 & 1273.175 & 22.86 & 		6.985 &   15.875 & 59.90844 & 	4.826 & 	6061-T6Alum \\
+1273.175 & 1648.46 & 	22.86 & 		0.9525 &   21.9075 & 756.6279 & 	375.285 & 	6061-T6Alum \\
+1648.46 & 	1653.2225 & 30.48 & 		8.5725 &   21.9075 & 97.58934 & 	4.7625 & 	6061-T6Alum \\
+1653.2225 & 1657.985 & 30.48 & 		7.62 &   22.86 & 	89.78138 & 	4.7625 & 	6061-T6Alum \\
+1657.985 & 1896.7958 & 30.48 & 		0.9525 &   29.5275 & 646.03376 & 	238.8108 & 6061-T6Alum \\
+1896.7958 & 1901.5583 & 40.64 & 		11.1125 &   29.5275 & 162.39744 & 	4.7625 & 	6061-T6Alum \\
+1901.5583 & 1906.3208 & 40.64 & 		11.1125 &   29.5275 & 162.39744 & 	4.7625 & 	6061-T6Alum \\
+1906.3208 & 2145.3983 & 30.48 & 		0.9525 &   29.5275 & 646.75512 & 	239.0775 & 6061-T6Alum \\
+2145.3983 & 2150.1608 & 40.64 & 		11.1125 &   29.5275 & 162.39744 & 	4.7625 & 	6061-T6Alum \\
+2150.1608 & 2156.2441 & 40.64 & 		11.1125 &   29.5275 & 207.49006 & 	6.0833 & 	6061-T6Alum \\
+2156.2441 & 2534.2977 & 30.48 & 		0.9525 &   29.5275 & 1026.45718 & 	378.0536 & 6061-T6Alum \\
+2534.2977 & 2539.0602 & 40.64 & 		11.1125 &   29.5275 & 162.39744 & 	4.7625 & 	6061-T6Alum \\
+2539.0602 & 2543.8227 & 40.64 & 		11.1125 &   29.5275 & 162.39744 & 	4.7625 & 	6061-T6Alum \\
+2543.8227 & 2608.4911 & 30.48 & 		0.9525 &   29.5275 & 175.58258 & 	64.6684 & 	6061-T6Alum \\
+2608.4911 & 2613.2536 & 40.64 & 		11.1125 &   29.5275 & 162.39744 & 	4.7625 & 	6061-T6Alum \\
+2613.2536 & 2619.95158 & 40.64 & 		11.1125 &   29.5275 & 474.4466 & 	6.69798 & 	304SS \\
+2619.95158 & 2667.12192 & 29.845 & 		0.3175 &   29.5275 & 493.8268 & 	47.17034 & 304SS \\
+2667.12192 & 2671.88442 & 40.64 & 		11.1125 &   29.5275 & 474.4466 &  4.7625 & 	304SS \\
+
+  \noalign{\smallskip}\hline
+\end{tabular}
+\end{scriptsize}
+
 A bash script will help create the full geometry of the beamline, with each region divided by each different materials, all with the correct spacing needed by fluka. This will help to speed up the implementation of a new beampipe design into the Hall.
+
+
+
+
 
 \section{Running the simulation in the farm system at Jlab}
 The different target cells where created in different input files: These will be used for creating the multiple different outputs. The info for the run period were put in a input file containing:
@@ -78,6 +159,38 @@ The different target cells where created in different input files: These will be
 \item current($\mu$A)
 \item Energy(GeV)
 \end{itemize}
+
+\begin{tabular}{ | l | l | l | l | l | }
+  \hline\noalign{\smallskip}
+
+n &	Target	&	hours	&	current(uA) &	Energy(GeV) \\
+\hline
+1 & H2 & 	108 & 	70 & 	9.4 \\
+2 & Al	 & 12 & 	40 & 	9.4 \\
+3 & H2 & 	31.2 & 	70 & 	6.4 \\
+4 & Al & 	4.8 & 	40 & 	6.4 \\
+5 & H2	 & 74.4 & 	35 & 	4.9 \\
+6 & Al & 	9.6 & 	40 & 	4.9 \\
+7 & H2 & 	108 & 	35 & 	3.8 \\
+8 & Al & 	12 & 	40 & 	3.8 \\
+9 & H2 & 	240 & 	70 & 	10.6 \\
+10 & Al & 	26.4 & 	40 & 	10.6 \\
+11 & H2 & 	240 & 	70 & 	8.5 \\
+12 & Al & 	26.4 & 	40 & 	8.5 \\
+13 & H2 & 	57.6 & 	50 & 	10.6 \\
+14 & H2 & 	45.6 & 	10 & 	10.6 \\
+15 & D2 & 	134.4 & 	50 & 	10.6 \\
+16 & D2 & 	91.2 & 	25 & 	10.6 \\
+17 & D2 & 	45.6 & 	10 & 	10.6 \\
+18 & Al & 	36 & 	40 & 	10.6 \\
+19 & H2 & 	12 & 	50 & 	8.5 \\
+20 & D2 & 	12 & 	50 & 	8.5 \\
+21 & Al & 	2.4 & 	40 & 	8.5 \\
+
+  \noalign{\smallskip}\hline
+\end{tabular}
+
+
 These info will be convoluted in the different input files in order to create the different simulation needed. In order to run the simulations and well use the structure of the Jlab farm computing system, I will need to run the same configuration multiple times. Each configuration file will have similar structure, with the info to be modified at the same line in the file.
 \begin{itemize}
 \item The current is given in $\mu$A and will need to be trasfered in number of particle per seconds for the activation with this configuration
@@ -91,6 +204,12 @@ These info will be convoluted in the different input files in order to create th
 
 \section{Analyzing the results}
 In order to analyze the results, we will need to take into account how these results are recorded in Fluka. The activation is recorded in pSv/second, rather than the dose and the 1MeV neutron equivalent flux on Silicon it is recorded per incident beam particle.
+\subsection{Activation studies}
+For activation studies we will need to keep in mind that the results are recorded for each target in dose equivalent pSv/second. In order to get the activation for all the targets at the times of observation after the end of the all experiment, One will need to add all the different contribution from the the different running times with the different targets, where the observation time window has been shifted correctly. While averaging the different activation from different targets, it is important to keep the same number of simulations with each configuration. Scaling the results with the total number of coonfiguration run will then give the final result. 
+
+
+\subsection{Accumulated dose and 1MeV neutron equivalent flux}
+For these observables the recorded data for each target is done for single incident particle. In order to get the right sample of simulations for the experiment one will need to scale each configuration with the number of incident particle that was run for each configuration. Since the data is cumulative, a full average over this weigthed sample will give the dose per electron for the full experiment.
 
 
 \begin{thebibliography}{9}
