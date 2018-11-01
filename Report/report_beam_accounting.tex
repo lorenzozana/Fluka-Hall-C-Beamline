@@ -54,12 +54,11 @@
  
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{JLAB-TN-18-040}
+\rhead{JLAB Beam Accounting Tools}
 \lhead{\today}
 \cfoot{\thepage}
 	
-\title{\textit{JLAB-TN-18-040} \\
-  Beam accounting in Hall-C}
+\title{\textit{ Beam accounting in Hall-C}}
 \author{Lorenzo Zana  \\
 	Jefferson Lab  \\
 	\and 
@@ -96,6 +95,9 @@ Different experiments will have a different beamline setup. It is important to t
 \item Length (cm)
 \item Material
 \end{itemize}
+See table \ref{tab:1} for the infos used in this example.
+\begin{center}
+\begin{table}[!h]
 \begin{scriptsize}
 \begin{tabular}{ | l | l | l | l | l | l | l | l | }
   \hline\noalign{\smallskip}
@@ -144,7 +146,10 @@ Different experiments will have a different beamline setup. It is important to t
   \noalign{\smallskip}\hline
 \end{tabular}
 \end{scriptsize}
-
+\caption{Beamline properties to be transfered in Fluka}
+\label{tab:1}
+\end{table}
+\end{center}
 A bash script will help create the full geometry of the beamline, with each region divided by each different materials, all with the correct spacing needed by fluka. This will help to speed up the implementation of a new beampipe design into the Hall.
 
 
@@ -159,7 +164,9 @@ The different target cells where created in different input files: These will be
 \item current($\mu$A)
 \item Energy(GeV)
 \end{itemize}
-
+See Table \ref{tab:2} for the beamtime for this experiment.
+\begin{center}
+\begin{table}[!h]
 \begin{tabular}{ | l | l | l | l | l | }
   \hline\noalign{\smallskip}
 
@@ -189,7 +196,10 @@ n &	Target	&	hours	&	current(uA) &	Energy(GeV) \\
 
   \noalign{\smallskip}\hline
 \end{tabular}
-
+\caption{Prospected beam time for the full experiment}
+\label{tab:2}
+\end{table}
+\end{center}
 
 These info will be convoluted in the different input files in order to create the different simulation needed. In order to run the simulations and well use the structure of the Jlab farm computing system, I will need to run the same configuration multiple times. Each configuration file will have similar structure, with the info to be modified at the same line in the file.
 \begin{itemize}
@@ -212,6 +222,14 @@ For activation studies we will need to keep in mind that the results are recorde
 For these observables the recorded data for each target is done for single incident particle. In order to get the right sample of simulations for the experiment one will need to scale each configuration with the number of incident particle that was run for each configuration. Since the data is cumulative, a full average over this weigthed sample will give the dose per electron for the full experiment.
 
 
+\section{Results}
+Results were calculated after each target and after the full experiment. Activation was calculated in the volume surrounding the beamline with a granularity of a cube of 10cm size:
+\begin{itemize}
+\item Z: from -2m from the target to the beam dump at the end of the wall
+\item X: from -2m from the target to 2m
+\item Y from the floor($- \sim 4m$) to 1m over the target.
+\end{itemize}
+
 \begin{thebibliography}{9}
 \bibitem[Code]{code} \emph{Fluka Hall-C Beam Accounting code:} \href{https://github.com/lorenzozana/Fluka-Hall-C-Beamline}{https://github.com/lorenzozana/Fluka-Hall-C-Beamline},
 Lorenzo Zana
@@ -221,9 +239,6 @@ T.T. Böhlen, F. Cerutti, M.P.W. Chin, A. Fassò, A. Ferrari, P.G. Ortega, A. Mair
 \bibitem[Fluka2]{fluka2} \emph{FLUKA: a multi-particle transport code:}
 A. Ferrari, P.R. Sala, A. Fasso`, and J. Ranft,
 \textbf{CERN-2005-10 (2005), INFN/TC\_05/11, SLAC-R-773}
-\bibitem[JLAB-TN-18-029]{18-029} \emph{Thick Target Radiation Source Term at CEBAF:}
-G. Kharashvili, P. Degtiarenko, V. Vylet,
-\href{https://jlabdoc.jlab.org/docushare/dsweb/Get/Document-162525/18-029.pdf}{\textbf{JLAB-TN-18-029 (2018)}}
 \end{thebibliography}
 
 \end{document}
