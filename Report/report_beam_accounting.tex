@@ -21,31 +21,31 @@
 \usepackage{hyperref}
 \usepackage[left=3cm, right=3cm, top=3cm]{geometry}
 \usepackage{listings}
-\usepackage{color}                                                                                                                                                                                                                                                                                              
-\definecolor{codegreen}{rgb}{0,0.6,0}                                                                                                                                                                                                                                                                           
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}                                                                                                                                                                                                                                                                        
-\definecolor{codepurple}{rgb}{0.58,0,0.82}                                                                                                                                                                                                                                                                      
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}                                                                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                                                                                
-\lstdefinestyle{mystyle}{                                                                                                                                                                                                                                                                                       
-    backgroundcolor=\color{backcolour},                                                                                                                                                                                                                                                                         
-    commentstyle=\color{codegreen},                                                                                                                                                                                                                                                                             
-    keywordstyle=\color{magenta},                                                                                                                                                                                                                                                                               
-    numberstyle=\tiny\color{codegray},                                                                                                                                                                                                                                                                          
-    stringstyle=\color{codepurple},                                                                                                                                                                                                                                                                             
-    basicstyle=\footnotesize,                                                                                                                                                                                                                                                                                   
-    breakatwhitespace=false,                                                                                                                                                                                                                                                                                    
-    breaklines=true,                                                                                                                                                                                                                                                                                            
-    captionpos=b,                                                                                                                                                                                                                                                                                               
-    keepspaces=true,                                                                                                                                                                                                                                                                                            
-    numbers=left,                                                                                                                                                                                                                                                                                               
-    numbersep=5pt,                                                                                                                                                                                                                                                                                              
-    showspaces=false,                                                                                                                                                                                                                                                                                           
-    showstringspaces=false,                                                                                                                                                                                                                                                                                     
-    showtabs=false,                                                                                                                                                                                                                                                                                             
-    tabsize=2                                                                                                                                                                                                                                                                                                   
-}                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{                                                                                                        
+    backgroundcolor=\color{backcolour},                                                                                                     
+    commentstyle=\color{codegreen},                                                                           
+    keywordstyle=\color{magenta},                                                                                 
+    numberstyle=\tiny\color{codegray},                                                                                             
+    stringstyle=\color{codepurple},                                                                                     
+    basicstyle=\footnotesize,                                                                                              
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
 \lstset{style=mystyle} 
 
 \usepackage{mathpazo,amsmath}
@@ -82,26 +82,28 @@
 
 
 \section{Introduction}
-During an experiment in Hall-C, in order to account for beam exposure and activation in the Hall, with normal configuration, one will need to take into account the radiation in the enclosure of the beamline. Multiple targets will be run multiple times with different intensities. Radiation budget for this experiment will be a cumulative answer from all this configuration. Fluka has the key feature to easily obtain statistics for these low process without too high computing power and can calculate activation at different time.
+Radiation budget has been evaluated for run group E12-09-011,E12-09-017,E12-09-002 that will run in the Fall 2018. In order to evaluate this, I have developed different tools that will permit to speed up similar analysis for Hall-C and other Halls. \\
+At the start I will discuss the tools developed in order to address this issue, then I will discuss some of the results from the simulation.
+During an experiment in Hall-C, in order to account for beam exposure and activation in the Hall, with normal configuration, one will need to take into account the radiation in the enclosure of the beam-line. Multiple targets will run multiple times with different intensities. Radiation budget for this experiment will be a cumulative answer from all these configurations. Fluka has the key feature to easily obtain statistics for these low process without too high computing power and can calculate activation dose at different times from beam exposure.
 \section{Getting info from the CAD design}
-Different experiments will have a different beamline setup. It is important to transfer just the important part of the setup for radiation simulation in FLUKA, since too much detail will be difficult to debug and will also consistently slow-down the simulation. In order to achieve this, simplified information regarding the beam enclosure where filtered from the design and transformed in information usefull for the FLUKA model. Different materials for the flange in the beamline (bolts, nuts, washers) had their weight determined and a local material was created for each flange in order to address local activation. The other relevant information was then transfered to a text file with:
+Different experiments will have a different beam-line setup. It is important to transfer just the important part of the setup for radiation simulation in FLUKA, since too much detail will be difficult to debug and will also consistently slow-down the simulation. In order to achieve this, simplified information regarding the beam enclosure where filtered from the design and transformed in information useful for the FLUKA model. Different materials for the flange in the beam-line (bolts, nuts, washers) had their weight determined and a local material was created for each flange in order to address local activation. The other relevant information was then transferred to a text file with:
 \begin{itemize} 
 \item Start Z(cm)
 \item Stop Z(cm)
-\item Outher Radius (cm)
+\item Outer Radius (cm)
 \item Thickness (cm)
 \item Inner Radius(cm)
 \item Weight (lbs)
 \item Length (cm)
 \item Material
 \end{itemize}
-See table \ref{tab:1} for the infos used in this example.
+See table \ref{tab:1} for the info used in this example.
 \begin{center}
-\begin{table}[!h]
+\begin{table}[!ht]
 \begin{scriptsize}
 \begin{tabular}{ | l | l | l | l | l | l | l | l | }
   \hline\noalign{\smallskip}
-  Start Z(cm) &	Stop Z(cm)&	Outher R(cm) &	Thickness(cm) &	Inner R(cm) &	Weight(lbs) &	Length(cm) &	Material \\
+  Start Z(cm) &	Stop Z(cm)&	Outer R(cm) &	Thickness(cm) &	Inner R(cm) &	Weight(lbs) &	Length(cm) &	Material \\
 \hline
   69.85 & 71.12 &	3.50012	&	1.651 &  1.84912 &		0.48768	&  1.27	& 6061-T6Alum \\
   71.12 & 78.8924 & 2.14884 & 0.29972 & 		1.84912 &   0.4953 & 7.7724 & 6061-T6Alum \\
@@ -146,11 +148,11 @@ See table \ref{tab:1} for the infos used in this example.
   \noalign{\smallskip}\hline
 \end{tabular}
 \end{scriptsize}
-\caption{Beamline properties to be transfered in Fluka}
+\caption{Beam-line properties to be transferred in Fluka}
 \label{tab:1}
 \end{table}
 \end{center}
-A bash script will help create the full geometry of the beamline, with each region divided by each different materials, all with the correct spacing needed by fluka. This will help to speed up the implementation of a new beampipe design into the Hall.
+A bash script will help create the full geometry of the beam-line, with each region divided by each different materials, all with the correct spacing needed by Fluka. This will help to speed up the implementation of a new beam pipe design into the Hall.
 
 
 
@@ -164,71 +166,131 @@ The different target cells where created in different input files: These will be
 \item current($\mu$A)
 \item Energy(GeV)
 \end{itemize}
-See Table \ref{tab:2} for the beamtime for this experiment.
+See Table \ref{tab:2} for the beam time for this experiment.
+
+\begin{table}[!ht]
 \begin{center}
-\begin{table}[!h]
-\begin{tabular}{ | l | l | l | l | l | }
+\begin{tabular}{ | l | c | r | c | c | }
   \hline\noalign{\smallskip}
 
-n &	Target	&	hours	&	current(uA) &	Energy(GeV) \\
+n &	Target	&	hours	&	current($\mu$A) &	Energy(GeV) \\
 \hline
-1 & H2 & 	108 & 	70 & 	9.4 \\
-2 & Al	 & 12 & 	40 & 	9.4 \\
-3 & H2 & 	31.2 & 	70 & 	6.4 \\
+1 & $H_2$ & 	108.0 & 	70 & 	9.4 \\
+2 & Al	 & 12.0 & 	40 & 	9.4 \\
+3 & $H_2$ & 	31.2 & 	70 & 	6.4 \\
 4 & Al & 	4.8 & 	40 & 	6.4 \\
-5 & H2	 & 74.4 & 	35 & 	4.9 \\
+5 & $H_2$	 & 74.4 & 	35 & 	4.9 \\
 6 & Al & 	9.6 & 	40 & 	4.9 \\
-7 & H2 & 	108 & 	35 & 	3.8 \\
-8 & Al & 	12 & 	40 & 	3.8 \\
-9 & H2 & 	240 & 	70 & 	10.6 \\
+7 & $H_2$ & 	108.0 & 	35 & 	3.8 \\
+8 & Al & 	12.0 & 	40 & 	3.8 \\
+9 & $H_2$ & 	240.0 & 	70 & 	10.6 \\
 10 & Al & 	26.4 & 	40 & 	10.6 \\
-11 & H2 & 	240 & 	70 & 	8.5 \\
+11 & $H_2$ & 	240.0 & 	70 & 	8.5 \\
 12 & Al & 	26.4 & 	40 & 	8.5 \\
-13 & H2 & 	57.6 & 	50 & 	10.6 \\
-14 & H2 & 	45.6 & 	10 & 	10.6 \\
-15 & D2 & 	134.4 & 	50 & 	10.6 \\
-16 & D2 & 	91.2 & 	25 & 	10.6 \\
-17 & D2 & 	45.6 & 	10 & 	10.6 \\
-18 & Al & 	36 & 	40 & 	10.6 \\
-19 & H2 & 	12 & 	50 & 	8.5 \\
-20 & D2 & 	12 & 	50 & 	8.5 \\
+13 & $H_2$ & 	57.6 & 	50 & 	10.6 \\
+14 & $H_2$ & 	45.6 & 	10 & 	10.6 \\
+15 & $D_2$ & 	134.4 & 	50 & 	10.6 \\
+16 & $D_2$ & 	91.2 & 	25 & 	10.6 \\
+17 & $D_2$ & 	45.6 & 	10 & 	10.6 \\
+18 & Al & 	36.0 & 	40 & 	10.6 \\
+19 & $H_2$ & 	12.0 & 	50 & 	8.5 \\
+20 & $D_2$ & 	12.0 & 	50 & 	8.5 \\
 21 & Al & 	2.4 & 	40 & 	8.5 \\
 
   \noalign{\smallskip}\hline
 \end{tabular}
 \caption{Prospected beam time for the full experiment}
 \label{tab:2}
-\end{table}
 \end{center}
+\end{table}
+
 
 These info will be convoluted in the different input files in order to create the different simulation needed. In order to run the simulations and well use the structure of the Jlab farm computing system, I will need to run the same configuration multiple times. Each configuration file will have similar structure, with the info to be modified at the same line in the file.
 \begin{itemize}
-\item The current is given in $\mu$A and will need to be trasfered in number of particle per seconds for the activation with this configuration
+\item The current is given in $\mu$A and will need to be transferred in number of particle per seconds for the activation with this configuration
 \item The energy will be replaced with the correct one for each configuration
 \item The hours of running with each configuration will be transformed in seconds and divided in 5 parts. In order to assume a more accurate accelerator efficiency during run time, each of the 5 parts of beam exposure will be followed by the same time of no beam. This will give a 55\% efficiency.
 \item The integrated beam exposure  will be recorded for each time in order to have a final number.
 \item The full activation of the  experiment is a convolution of the different configurations at a recorded time after all the different targets were exposed. The time of activation from beam exposure at the end of the experiment will depend of the time that is left in the experiment. For this reason, in order to get the correct time at each step, one start the file creation from the last target, and build the correct time delay for each configuration.
-\item The activation was then calculated at different time from beam exposure (1hour, 12hours, 1day, 1week, 1month) for each target exposure and for the full experiment exposure, using different times for each targets, decided from the alghoritm explained in the previous point
-\item For each configuratio multiple simulation were createdL The random seed was created and modified for each simulation in order to assure that each simulation was statistically indipendent.
+\item The activation was then calculated at different time from beam exposure (1 hour, 12 hours, 1 day, 1 week, 1 month) for each target exposure and for the full experiment exposure, using different times for each targets, decided from the algorithm explained in the previous point
+\item For each configuration multiple simulation were created. The random seed was created and modified for each simulation in order to assure that each simulation was statistically independent.
 \end{itemize}
 
 \section{Analyzing the results}
-In order to analyze the results, we will need to take into account how these results are recorded in Fluka. The activation is recorded in pSv/second, rather than the dose and the 1MeV neutron equivalent flux on Silicon it is recorded per incident beam particle.
+In order to analyze the results, we will need to take into account how these results are recorded in Fluka. The activation is recorded in pSv/second, rather than the dose and the 1 MeV neutron equivalent flux on Silicon it is recorded per incident beam particle.
 \subsection{Activation studies}
-For activation studies we will need to keep in mind that the results are recorded for each target in dose equivalent pSv/second. In order to get the activation for all the targets at the times of observation after the end of the all experiment, One will need to add all the different contribution from the the different running times with the different targets, where the observation time window has been shifted correctly. While averaging the different activation from different targets, it is important to keep the same number of simulations with each configuration. Scaling the results with the total number of coonfiguration run will then give the final result. 
+For activation studies we will need to keep in mind that the results are recorded for each target in dose equivalent pSv/second. In order to get the activation for all the targets at the times of observation after the end of the all experiment, One will need to add all the different contribution from the the different running times with the different targets, where the observation time window has been shifted correctly. While averaging the different activation from different targets, it is important to keep the same number of simulations with each configuration. Scaling the results with the total number of configuration run will then give the final result. 
 
 
-\subsection{Accumulated dose and 1MeV neutron equivalent flux}
-For these observables the recorded data for each target is done for single incident particle. In order to get the right sample of simulations for the experiment one will need to scale each configuration with the number of incident particle that was run for each configuration. Since the data is cumulative, a full average over this weigthed sample will give the dose per electron for the full experiment.
+\subsection{Accumulated dose and 1 MeV neutron equivalent flux}
+For these observable the recorded data for each target is done for single incident particle. In order to get the right sample of simulations for the experiment one will need to scale each configuration with the number of incident particle that was run for each configuration. Since the data is cumulative, a full average over this weighted sample will give the dose per electron for the full experiment.
 
 
 \section{Results}
-Results were calculated after each target and after the full experiment. Activation was calculated in the volume surrounding the beamline with a granularity of a cube of 10cm size:
+Results were calculated after each target and after the full experiment. Activation was calculated in the volume surrounding the beam line with a granularity of a cube of 10cm size:
 \begin{itemize}
 \item Z: from -2m from the target to the beam dump at the end of the wall
 \item X: from -2m from the target to 2m
 \item Y from the floor($- \sim 4m$) to 1m over the target.
 \end{itemize}
+The accumulated radiation level is projected on a plane at 1.5m from the ground and observed in planes perpendicular to the beam-line at different distance from the target: 1.1m, 3.0m, 5.0m, 10.0m, 15.0m, 20.0m. Radiation levels are also projected on the beam-pipe and the walls. The radiation is averaged over a cube of 10cm in size. In Figure \ref{fig:dose_acc} it is shown the expected accumulated dose after the full experiment. In order to address electronics radiation damage, one can consider also the 1 MeV equivalent neutron flux on Silicon per $cm^2$: This is shown in Figure \ref{fig:1mev_acc}. From Figure \ref{fig:act1h} to Figure \ref{fig:act1m} it is shown the expected activation in the Hall after the experiment is finished. The activation is estimated after  1 hour, 12 hours, 1 day, 1 week, 1 month from beam exposure and is expressed in mrem/hour. 
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{Pictures/accumulated_dose_rad.png} \\
+    \caption{Accumulated Dose (rad) cumulative for the full exposure as shown in Table\ref{tab:2}.   }
+    \label{fig:dose_acc}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{Pictures/accumulated_1MeVeq_neutron.png} \\
+    \caption{Accumulated 1 MeV equivalent neutron fluence on Silicon cumulative for the full exposure as shown in Table\ref{tab:2}.   }
+    \label{fig:1mev_acc}
+  \end{center}
+\end{figure}
+
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{Pictures/accumulated_1h.png} \\
+    \caption{Activation after 1 hour from full exposure as shown in Table\ref{tab:2}. Radiation level is expressed in mrem/hour.   }
+    \label{fig:act1h}
+  \end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{Pictures/accumulated_12h.png} \\
+    \caption{Activation after 12 hours from  the full exposure as shown in Table\ref{tab:2}. Radiation level is expressed in mrem/hour.  }
+    \label{fig:act12h}
+  \end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{Pictures/accumulated_1d.png} \\
+    \caption{Activation after 1 day from  the full exposure as shown in Table\ref{tab:2}.  Radiation level is expressed in mrem/hour. }
+    \label{fig:act1d}
+  \end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{Pictures/accumulated_1w.png} \\
+    \caption{Activation after 1 week from  the full exposure as shown in Table\ref{tab:2}. Radiation level is expressed in mrem/hour.  }
+    \label{fig:act1w}
+  \end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{Pictures/accumulated_1m.png} \\
+    \caption{Activation after 1 month from  the full exposure as shown in Table\ref{tab:2}. Radiation level is expressed in mrem/hour.  }
+    \label{fig:act1m}
+  \end{center}
+\end{figure}
 
 \begin{thebibliography}{9}
 \bibitem[Code]{code} \emph{Fluka Hall-C Beam Accounting code:} \href{https://github.com/lorenzozana/Fluka-Hall-C-Beamline}{https://github.com/lorenzozana/Fluka-Hall-C-Beamline},
