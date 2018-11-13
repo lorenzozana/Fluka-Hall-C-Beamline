@@ -82,17 +82,16 @@
 
 
 \section{Introduction}
-Radiation budget has been evaluated for run group E12-09-011,E12-09-017,E12-09-002 that will run in the Fall 2018. In order to evaluate this, I have developed different tools that will permit to speed up similar analysis for Hall-C and other Halls. \\
-At the start I will discuss the tools developed in order to address this issue, then I will discuss some of the results from the simulation.
+Radiation budget need to be evaluated with every experiment. In this study it is shown the results for run group E12-09-011,E12-09-017,E12-09-002 that will run in Hall-C during the Fall of 2018. In order to evaluate this, I have developed different tools that will permit to speed up similar analysis for Hall-C and other Halls. The scope of this technical note is to show the status of this tools and the results obtained analyzing the results from simulations for this experiment.\\
 During an experiment in Hall-C, in order to account for beam exposure and activation in the Hall, with normal configuration, one will need to take into account the radiation in the enclosure of the beam-line. Multiple targets will run multiple times with different intensities. Radiation budget for this experiment will be a cumulative answer from all these configurations. Fluka has the key feature to easily obtain statistics for these low process without too high computing power and can calculate activation dose at different times from beam exposure.
 \section{Getting info from the CAD design}
-Different experiments will have a different beam-line setup. It is important to transfer just the important part of the setup for radiation simulation in FLUKA, since too much detail will be difficult to debug and will also consistently slow-down the simulation. In order to achieve this, simplified information regarding the beam enclosure where filtered from the design and transformed in information useful for the FLUKA model. Different materials for the flange in the beam-line (bolts, nuts, washers) had their weight determined and a local material was created for each flange in order to address local activation. The other relevant information was then transferred to a text file with:
+Different experiments will have a different beam-line setup.  Since too much detail will be difficult to debug and will also consistently slow-down the simulation, it is important to transfer just the important part of the setup for radiation simulation in FLUKA. In order to achieve this, simplified information regarding the beam enclosure where filtered from the design and transformed in information useful for the FLUKA model. Different materials for the flange in the beam-line (bolts, nuts, washers) had their weight determined and a local material was created for each flange in order to address local activation. The other relevant information was then transferred to a text file with:
 \begin{itemize} 
-\item Start Z(cm)
-\item Stop Z(cm)
+\item Start Z (cm)
+\item Stop Z (cm)
 \item Outer Radius (cm)
 \item Thickness (cm)
-\item Inner Radius(cm)
+\item Inner Radius (cm)
 \item Weight (lbs)
 \item Length (cm)
 \item Material
@@ -103,7 +102,7 @@ See table \ref{tab:1} for the info used in this example.
 \begin{scriptsize}
 \begin{tabular}{ | l | l | l | l | l | l | l | l | }
   \hline\noalign{\smallskip}
-  Start Z(cm) &	Stop Z(cm)&	Outer R(cm) &	Thickness(cm) &	Inner R(cm) &	Weight(lbs) &	Length(cm) &	Material \\
+  Start Z(cm) &	Stop Z(cm) &	Outer R(cm) &	Thickness(cm) &	Inner R(cm) &	Weight(lbs) &	Length(cm) &	Material \\
 \hline
   69.85 & 71.12 &	3.50012	&	1.651 &  1.84912 &		0.48768	&  1.27	& 6061-T6Alum \\
   71.12 & 78.8924 & 2.14884 & 0.29972 & 		1.84912 &   0.4953 & 7.7724 & 6061-T6Alum \\
@@ -152,14 +151,14 @@ See table \ref{tab:1} for the info used in this example.
 \label{tab:1}
 \end{table}
 \end{center}
-A bash script will help create the full geometry of the beam-line, with each region divided by each different materials, all with the correct spacing needed by Fluka. This will help to speed up the implementation of a new beam pipe design into the Hall.
+A bash script \cite{code} will help create the full geometry of the beam-line, with each region divided by each different materials, all with the correct spacing needed by Fluka. This will help to speed up the implementation of a new beam pipe design into the Hall.
 
 
 
 
 
 \section{Running the simulation in the farm system at Jlab}
-The different target cells where created in different input files: These will be used for creating the multiple different outputs. The info for the run period were put in a input file containing:
+The different target cells where created in different input files: These will be used for creating the multiple different outputs. The info for the run period were screened and put in a input file containing:
 \begin{itemize}
 \item Target
 \item hours
@@ -205,13 +204,13 @@ n &	Target	&	hours	&	current($\mu$A) &	Energy(GeV) \\
 \end{table}
 
 
-These info will be convoluted in the different input files in order to create the different simulation needed. In order to run the simulations and well use the structure of the Jlab farm computing system, I will need to run the same configuration multiple times. Each configuration file will have similar structure, with the info to be modified at the same line in the file.
+These info will be convoluted in the different input files in order to create the different configurations needed. In order to obtain the desired statistic and well use the structure of the Jlab farm computing system, each configuration will run multiple times. In order to speed up this procedure of creating multiple inputs, each configuration file will have similar structure, with the info that need to be modified at the same line. What the submission script \cite{code} does is:
 \begin{itemize}
 \item The current is given in $\mu$A and will need to be transferred in number of particle per seconds for the activation with this configuration
 \item The energy will be replaced with the correct one for each configuration
-\item The hours of running with each configuration will be transformed in seconds and divided in 5 parts. In order to assume a more accurate accelerator efficiency during run time, each of the 5 parts of beam exposure will be followed by the same time of no beam. This will give a 55\% efficiency.
-\item The integrated beam exposure  will be recorded for each time in order to have a final number.
-\item The full activation of the  experiment is a convolution of the different configurations at a recorded time after all the different targets were exposed. The time of activation from beam exposure at the end of the experiment will depend of the time that is left in the experiment. For this reason, in order to get the correct time at each step, one start the file creation from the last target, and build the correct time delay for each configuration.
+\item The hours of running with each configuration will be transformed in seconds and divided in 5 parts. In order to assume a more accurate accelerator efficiency during run time, each of the 5 time ranges of beam exposure will be followed by the same time range of no beam. This will give a 55\% efficiency.
+\item The integrated beam exposure  will be recorded for each time in order to have a final number to be used in the normalization later (Fluka calculates some of their obervable in (quantity measured)/(incident beam particle) ).
+\item The full activation of the  experiment is a convolution of the different configurations reacirded at the sane time after all the different targets were exposed. The time of activation from beam exposure at the end of the experiment will depend of the time that is left in the experiment: For this reason, in order to get the correct time at each configuration, one start the time accounting from the last target exposed, and build the correct time delay for each configuration adding each contribution to the full exposure.
 \item The activation was then calculated at different time from beam exposure (1 hour, 12 hours, 1 day, 1 week, 1 month) for each target exposure and for the full experiment exposure, using different times for each targets, decided from the algorithm explained in the previous point
 \item For each configuration multiple simulation were created. The random seed was created and modified for each simulation in order to assure that each simulation was statistically independent.
 \end{itemize}
@@ -223,7 +222,7 @@ For activation studies we will need to keep in mind that the results are recorde
 
 
 \subsection{Accumulated dose and 1 MeV neutron equivalent flux}
-For these observable the recorded data for each target is done for single incident particle. In order to get the right sample of simulations for the experiment one will need to scale each configuration with the number of incident particle that was run for each configuration. Since the data is cumulative, a full average over this weighted sample will give the dose per electron for the full experiment.
+For these observable the recorded data for each target is done for single incident particle. In order to get the right sample of simulations for the experiment one will need to scale each configuration with the number of incident particle that was run for each configuration. Since the data is cumulative, a full average over this weighted sample will give the dose per electron for the full experiment. 
 
 
 \section{Results}
