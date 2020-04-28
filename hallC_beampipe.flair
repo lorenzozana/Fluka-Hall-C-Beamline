@@ -2,7 +2,7 @@
 # FLUKA Project file
 Version: 2
 Title: Hall C activation
-Input: hallC_beampipe.inp
+Input: hallC_beampipe_image.inp
 Submit: *Default
 Tabs: 0.1 0.32 0.56 0.81 1.0
 Page: Flair
@@ -41,9 +41,9 @@ Material: AL6061T6
 End
 
 # Material
-Material: PIPE39M
+Material: ZINC
 	alpha: 0
-	color: #501090
+	color: #1070B0
 	fuzz: 0.0
 	ior: 1.0
 	shine: 10.0
@@ -61,9 +61,9 @@ Material: SS347
 End
 
 # Material
-Material: PIPE1M
+Material: BORPOLY
 	alpha: 0
-	color: #701050
+	color: #905050
 	fuzz: 0.0
 	ior: 1.0
 	shine: 10.0
@@ -71,9 +71,9 @@ Material: PIPE1M
 End
 
 # Material
-Material: ZINC
+Material: PIPE39M
 	alpha: 0
-	color: #1070B0
+	color: #501090
 	fuzz: 0.0
 	ior: 1.0
 	shine: 10.0
@@ -211,9 +211,9 @@ Material: SS_EF_3
 End
 
 # Material
-Material: BORPOLY
+Material: PIPE1M
 	alpha: 0
-	color: #905050
+	color: #701050
 	fuzz: 0.0
 	ior: 1.0
 	shine: 10.0
@@ -335,17 +335,20 @@ Geometry:
 		Options.errors: 0
 		Options.shortcut: F4
 		Options.viewport: 0
+		Palette: True
 		Palette._visible: True
-		Palette.cpd: 10
-		Palette.max: 10000000.0
-		Palette.min: 10.0
-		Palette.n: 60
+		Palette.cpd: 8
+		Palette.max: 1000.0
+		Palette.min: 0.01
+		Palette.n: 40
 		Show: 0
 		Show.lattice: 1
 		Show.voxel: 1
+		Usrbin: True
 		Usrbin._visible: True
-		Usrbin.file: Farm/NewShield/Newshield_28.dat
-		Usrbin.norm: 1.3e+17
+		Usrbin.det: 6
+		Usrbin.file: Data/accumulated_activation_64.bnn
+		Usrbin.norm: 7.56E-3
 		deflights: 1
 		layer: 3D
 	End
@@ -355,8 +358,8 @@ End
 Plot: Red
 	Format: .eps
 	Type:   Geometry
-	basisu: -0.791908 0.00437958 0.610625
-	basisv: 0.0560519 0.996274 0.065547
+	basisu: -0.577932 0.00439333 0.816074
+	basisv: 0.0728243 0.996274 0.0462097
 	boundaries: 1
 	cbcolors: 0
 	cblog: 0
@@ -365,12 +368,12 @@ Plot: Red
 	cbtics: 0
 	coord: U-V
 	cpd: 0
-	extends: 1283.92 692.24
+	extends: 1283.92 681.423
 	grid: 0
 	index: 0
 	labels: 1
 	layer: 3D
-	origin: -815.567 195.449 -94.5521
+	origin: -1314.08 201.339 457.758
 	subtype: Material
 	title: GeoViewer Red plot
 	x2log: 0
@@ -397,7 +400,7 @@ Plot: Green
 	cbtics: 0
 	coord: Z-X
 	cpd: 0
-	extends: 1626.63 48148.2
+	extends: 1626.63 94561.4
 	grid: 0
 	index: 0
 	labels: 1
@@ -423,7 +426,7 @@ Plot: Blue
 	basisv: 0 1 0
 	boundaries: 1
 	coord: Z-Y
-	extends: 1899.01 1023.88
+	extends: 1899.01 2.29072
 	labels: 1
 	layer: Media
 	origin: 0 -317.424 1344.72
@@ -445,7 +448,7 @@ Plot: Magenta
 	cbtics: 0
 	coord: X-Y
 	cpd: 0
-	extends: 248.832 134.283
+	extends: 248.832 0.300159
 	grid: 0
 	index: 0
 	labels: 1
